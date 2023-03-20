@@ -1,12 +1,8 @@
+import SearchBar from '../SearchBar';
 export function Footer() {
-  return <div>FOOTER</div>;
+  return (
+    <div className='min-h-[488px] flex justify-center items-center flex-col bg-[url("/footer-banner.png")] bg-cover bg-center app-banner -mt-4 gap-5'>
+      <SearchBar />
+    </div>
+  );
 }
-// const Footer = () => {
-//   return (
-//     <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
-//       FOOTER
-//     </div>
-//   );
-// };
-
-// export default Footer;
