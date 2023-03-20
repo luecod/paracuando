@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import { Layout } from '../components/layout/Layout';
+import SearchBar from '../components/navigation/SearchBar';
 import { useCategories } from '../lib/services/categories.services';
 
 import { NextPageWithLayout } from './page';
@@ -17,12 +18,13 @@ const Home: NextPageWithLayout = () => {
         <div>
           <Logo />
         </div>
+        <SearchBar />
         <div className="flex flex-col gap-4">
-          <input
+          {/* <input
             className="px-6 py-4 rounded-3xl w-full sm:w-[465px]"
             type="text"
             placeholder="¿Qué quieres ver en tu ciudad?"
-          />
+          /> */}
           <div className="flex items-center justify-center gap-2">
             <Link href={'/category/marcas-y-tiendas'}>
               <button>Marcas y tiendas</button>
