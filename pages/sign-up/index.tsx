@@ -89,9 +89,12 @@ export default function SingUpPage() {
               />
             </label>
             <button>Sign Up</button>
-            <span className="text-center app-subtitle-2 pt-2">
+            <Link
+              href={'/login/recover-password'}
+              className="text-center app-subtitle-2 pt-2"
+            >
               Did you forget your password?
-            </span>
+            </Link>
           </form>
         </div>
       </div>

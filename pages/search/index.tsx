@@ -1,3 +1,4 @@
+import { Layout } from '../../components/layout/Layout';
 import { NextPageWithLayout } from '../page';
 
 const SearchPage: NextPageWithLayout = () => {
@@ -7,6 +8,10 @@ const SearchPage: NextPageWithLayout = () => {
       <button>search</button>
     </div>
   );
+};
+
+SearchPage.getLayout = (page) => {
+  return <Layout>{page}</Layout>;
 };
 
 export default SearchPage;
