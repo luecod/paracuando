@@ -21,7 +21,7 @@ export const Layout: React.FC<ILayout> = ({ children }) => {
   return (
     <>
       <div className="overflow-x-hidden">
-        <Header isLoggedIn={true} currentUser={userExample} />
+        <Header isLoggedIn={false} currentUser={userExample} />
         <main className="app-container ">{children}</main>
         <Footer />
       </div>
