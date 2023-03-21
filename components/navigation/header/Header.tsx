@@ -15,20 +15,22 @@ interface IHeader {
 const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
   return (
     <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
-      <IconLogo></IconLogo>
+      <Link href={'/'}>
+        <IconLogo></IconLogo>
+      </Link>
 
       <div className="right-[27] flex items-center gap-[27] space-x-8">
-        <Link
-          className="text-app-blue inline-flex space-x-2"
-          href={'/category/marcas-y-tiendas'}
-        >
-          <Plus></Plus>
-          <span>Crear Publicación</span>
-        </Link>
         {isLoggedIn ? (
           <div className="space-x-8 flex items-center">
             <Link
-              className="inline-flex space-x-2"
+              className="text-app-blue sm:inline-flex space-x-2 hidden"
+              href={'/category/marcas-y-tiendas'}
+            >
+              <Plus></Plus>
+              <span>Crear Publicación</span>
+            </Link>
+            <Link
+              className="sm:inline-flex space-x-2 hidden"
               href={'/category/marcas-y-tiendas'}
             >
               <EmptyHeart></EmptyHeart> <span>Mis Votos</span>
@@ -40,9 +42,18 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
             </button>
           </div>
         ) : (
-          <div className="space-x-5">
-            <Link href={'/category/marcas-y-tiendas'}>Log In</Link>
-            <Link href={'/category/marcas-y-tiendas'}>Sing Up</Link>
+          <div className="space-x-4 sm:space-x-8 flex items-center">
+            <Link
+              className="text-app-blue inline-flex space-x-2"
+              href={'/category/marcas-y-tiendas'}
+            >
+              <Plus></Plus>
+              <span>Crear Publicación</span>
+            </Link>
+            <div className="space-x-4 sm:space-x-5">
+              <Link href={'/category/marcas-y-tiendas'}>Log In</Link>
+              <Link href={'/category/marcas-y-tiendas'}>Sing Up</Link>
+            </div>
           </div>
         )}
       </div>
