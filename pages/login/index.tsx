@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Layout } from '../../components/layout/Layout';
 import { NextPageWithLayout } from '../page';
 
 const LoginPage: NextPageWithLayout = () => {
@@ -8,6 +9,10 @@ const LoginPage: NextPageWithLayout = () => {
       <Link href={'/login/create-account'}>create account</Link>
     </div>
   );
+};
+
+LoginPage.getLayout = (page) => {
+  return <Layout>{page}</Layout>;
 };
 
 export default LoginPage;
