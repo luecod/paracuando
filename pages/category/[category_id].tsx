@@ -8,7 +8,7 @@ export const CategoryPage: NextPageWithLayout = () => {
     <div>
       <h1 className="text-2xl">
         {' '}
-        this page is{' '}
+        this page is.-. {' '}
         <span className="text-app-red text-6xl">{category_id}</span>
       </h1>
     </div>
