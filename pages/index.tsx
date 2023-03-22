@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import { Layout } from '../components/layout/Layout';
 import SearchBar from '../components/navigation/SearchBar';
+import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
+import { eventsMock } from '../lib/data/events.mock';
 import { useCategories } from '../lib/services/categories.services';
 
 import { NextPageWithLayout } from './page';
@@ -39,7 +41,9 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-[70vh]">CONTENIDO</div>
+      <div className="bg-red-300 h-[70vh]">
+        <EventSlider title='Los mas populares' subtitle='subtitulo' events={eventsMock} />
+      </div>
     </div>
   );
 };
