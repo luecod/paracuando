@@ -15,7 +15,7 @@ const Card: React.FC<CardProps> = ({ title, content, url, image, votes }) => {
         <div className="w-[299px] h-[454px] bg-app-grayLighter rounded-[20px] shadow-app-card">
             <div>
                 <img className="w-[299px] h-[239px] rounded-t-[20px] rounded-b-[20px]" src={image} alt={title} />
-                <Heart className="" />
+                {/* <Heart /> */}
             </div>
             <div>
                 <h2 className="text-xl font-semibold pt-2">{title}</h2>
