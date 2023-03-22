@@ -45,14 +45,14 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
           <div className="space-x-4 sm:space-x-8 flex items-center">
             <Link
               className="text-app-blue inline-flex space-x-2"
-              href={'/category/marcas-y-tiendas'}
+              href={'/profile/create-post'}
             >
               <Plus></Plus>
               <span>Crear Publicación</span>
             </Link>
             <div className="space-x-4 sm:space-x-5">
-              <Link href={'/category/marcas-y-tiendas'}>Log In</Link>
-              <Link href={'/category/marcas-y-tiendas'}>Sing Up</Link>
+              <Link href={'/login'}>Log In</Link>
+              <Link href={'/sign-up'}>Sing Up</Link>
             </div>
           </div>
         )}
