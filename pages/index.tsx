@@ -25,21 +25,47 @@ const Home: NextPageWithLayout = () => {
             type="text"
             placeholder="¿Qué quieres ver en tu ciudad?"
           /> */}
-          <div className="flex items-center justify-center gap-2">
-            <Link href={'/category/marcas-y-tiendas'}>
+          <div className="flex items-center justify-center gap-[9px] sm:gap-[10px]">
+            <Link
+              className="text-[13px] py-[7.5px] px-[11px] sm:text-[16px] sm:px-[18.5px] rounded-[23px] bg-white"
+              href={'/category/marcas-y-tiendas'}
+            >
               <button>Marcas y tiendas</button>
             </Link>
-            <Link href={'/category/artistas-y-conciertos'}>
+            <Link
+              className="text-[13px] py-[7.5px] px-[11px] sm:text-[16px] sm:px-[18.5px] rounded-[23px] bg-white"
+              href={'/category/artistas-y-conciertos'}
+            >
               <button>Artistas y conciertos</button>
             </Link>
-            <Link href={'/category/torneos'}>
+            <Link
+              className="text-[13px] py-[7.5px] px-[11px] sm:text-[16px] sm:px-[18.5px] rounded-[23px] bg-white"
+              href={'/category/torneos'}
+            >
               <button>Torneos</button>
             </Link>
           </div>
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-[70vh]">CONTENIDO</div>
+      <div className="w-screen bg-red-300 flex flex-col gap-8">
+        <div className="h-[574px]">Populares</div>
+        <div className="h-[574px]">Sugerencias</div>
+        <div className="h-[278px] bg-[#F8F7FA]">
+          <p>¡Hagámoslo más personal!</p>
+          <p>
+            Selecciona tus intereses para brindarte sugerencia de acuerdo a tus
+            gustos
+          </p>
+          <div className="px-[23px] flex gap-[11px] max-w-content overflow-auto">
+            <button className="app-small-box">Artistas Mexicanos</button>
+            <button className="app-small-box">Artistas Mexicanos</button>
+            <button className="app-small-box">Artistas Mexicanos</button>
+            <button className="app-small-box">Artistas Mexicanos</button>
+          </div>
+        </div>
+        <div className="h-[574px]">Recientes</div>
+      </div>
     </div>
   );
 };
