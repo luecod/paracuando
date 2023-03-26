@@ -41,8 +41,27 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="bg-red-300 h-[70vh]">
-        <EventSlider title='Los mas populares' subtitle='subtitulo' events={eventsMock} />
+      <div className=" h-[100vh] pt-12 pb-6 ">
+        <EventSlider title='Los mas populares' subtitle='Lo que las personas piden más' events={eventsMock} />
+      </div>
+      <div className=" h-[100vh] pt-6 pb-6 ">
+        <EventSlider title='Sugerencias para ti' subtitle='Publicaciones que te podrian interesar' events={eventsMock} />
+      </div>
+      <div className="h-[278px] bg-[#F8F7FA]">
+        <p>¡Hagámoslo más personal!</p>
+        <p>
+          Selecciona tus intereses para brindarte sugerencia de acuerdo a tus
+          gustos
+        </p>
+        <div className="px-[23px] flex gap-[11px] max-w-content overflow-auto">
+          <button className="app-small-box">Artistas Mexicanos</button>
+          <button className="app-small-box">Artistas Mexicanos</button>
+          <button className="app-small-box">Artistas Mexicanos</button>
+          <button className="app-small-box">Artistas Mexicanos</button>
+        </div>
+      </div>
+      <div className="app h-[100vh]  pt-6 pb-6">
+        <EventSlider title='Recientes' subtitle='Las personas últimamente están hablando de esto' events={eventsMock} />
       </div>
     </div>
   );

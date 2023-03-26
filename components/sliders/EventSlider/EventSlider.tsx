@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { BsArrowRightCircle } from 'react-icons/bs';
+import { BsArrowLeftCircle, BsArrowRightCircle } from 'react-icons/bs';
 import 'swiper/css';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -52,6 +52,9 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
           <div className="hidden sm:flex items-center absolute top-0 bottom-0 -right-20 left-auto cursor-pointer">
             <SlideNextButton />
           </div>
+          <div className="hidden sm:flex items-center absolute top-0 bottom-0 -left-20 right-auto cursor-pointer">
+            <SlidePrevButton />
+          </div>
         </Swiper>
       </div>
     </div>
@@ -71,6 +74,22 @@ const SlideNextButton = ({ className }: ISlideNextButton) => {
   return (
     <button className={className} onClick={() => swiper.slideNext()}>
       <BsArrowRightCircle
+        className="text-app-blue bg-white rounded-full"
+        size={50}
+      />
+    </button>
+  );
+};
+
+interface ISlidePrevButton {
+  className?: string;
+}
+const SlidePrevButton = ({ className }: ISlidePrevButton) => {
+  const swiper = useSwiper();
+
+  return (
+    <button className={className} onClick={() => swiper.slidePrev()}>
+      <BsArrowLeftCircle
         className="text-app-blue bg-white rounded-full"
         size={50}
       />
