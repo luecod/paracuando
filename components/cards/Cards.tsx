@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react"
 import { Heart } from "../assets/svg/Heart";
-import VotePerson from "../assets/svg/Voteperson";
+import VotePerson from "../assets/svg/VotePerson";
 
 
 interface CardProps {
