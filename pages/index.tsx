@@ -48,22 +48,9 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="w-screen bg-red-300 flex flex-col gap-8">
+      <div className=" bg-red-300 flex flex-col gap-8">
         <div className="h-[574px]">Populares</div>
         <div className="h-[574px]">Sugerencias</div>
-        <div className="h-[278px] bg-[#F8F7FA]">
-          <p>¡Hagámoslo más personal!</p>
-          <p>
-            Selecciona tus intereses para brindarte sugerencia de acuerdo a tus
-            gustos
-          </p>
-          <div className="px-[23px] flex gap-[11px] max-w-content overflow-auto">
-            <button className="app-small-box">Artistas Mexicanos</button>
-            <button className="app-small-box">Artistas Mexicanos</button>
-            <button className="app-small-box">Artistas Mexicanos</button>
-            <button className="app-small-box">Artistas Mexicanos</button>
-          </div>
-        </div>
         <div className="h-[574px]">Recientes</div>
       </div>
     </div>
