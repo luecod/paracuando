@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface IEventSlider {
   title?: string;
   subtitle?: string;
-  events: [];
+  events: IEvents[];
 }
 
 export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
@@ -24,28 +24,28 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
           breakpoints={{
             0: {
               slidesPerView: 1,
-              spaceBetween: 40,
+              spaceBetween: 10,
             },
             330: {
-              slidesPerView: 1.2,
-              spaceBetween: 40,
+              slidesPerView: 1,
+              spaceBetween: 10,
             },
             600: {
-              slidesPerView: 1.8,
-              spaceBetween: 30,
+              slidesPerView: 1.5,
+              spaceBetween: 10,
             },
             900: {
-              slidesPerView: 2.5,
-              spaceBetween: 30,
+              slidesPerView: 1.8,
+              spaceBetween: 10,
             },
             1200: {
-              slidesPerView: 3.2,
-              spaceBetween: 20,
+              slidesPerView: 3,
+              spaceBetween: 10,
             },
           }}
         >
           {events?.map((event, index) => (
-            <SwiperSlide key={index}>{index}
+            <SwiperSlide key={index}>{ }
               <Card image={event.image} title={event.title} content={event.short_description} url={event.url} votes={event.votes} />
             </SwiperSlide>
           ))}
@@ -63,6 +63,7 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
 
 // some-inner-component.jsx
 import { useSwiper } from 'swiper/react';
+import { IEvents } from '../../../pages';
 import Card from '../../cards/Cards';
 
 interface ISlideNextButton {

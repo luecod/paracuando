@@ -5,8 +5,15 @@ import SearchBar from '../components/navigation/SearchBar';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../lib/data/events.mock';
 import { useCategories } from '../lib/services/categories.services';
-
 import { NextPageWithLayout } from './page';
+
+export interface IEvents {
+  title: string;
+  short_description: string;
+  url: string;
+  image: string;
+  votes: number;
+}
 
 const Home: NextPageWithLayout = () => {
   const { data, error, isLoading } = useCategories();
@@ -41,13 +48,13 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className=" h-[100vh] pt-12 pb-6 ">
+      <div className="app-card ">
         <EventSlider title='Los mas populares' subtitle='Lo que las personas piden más' events={eventsMock} />
       </div>
-      <div className=" h-[100vh] pt-6 pb-6 ">
+      <div className=" app-card ">
         <EventSlider title='Sugerencias para ti' subtitle='Publicaciones que te podrian interesar' events={eventsMock} />
       </div>
-      <div className="h-[278px] bg-[#F8F7FA]">
+      <div className="h-[278px]  bg-[#F8F7FA]">
         <p>¡Hagámoslo más personal!</p>
         <p>
           Selecciona tus intereses para brindarte sugerencia de acuerdo a tus
@@ -60,7 +67,7 @@ const Home: NextPageWithLayout = () => {
           <button className="app-small-box">Artistas Mexicanos</button>
         </div>
       </div>
-      <div className="app h-[100vh]  pt-6 pb-6">
+      <div className="app-card">
         <EventSlider title='Recientes' subtitle='Las personas últimamente están hablando de esto' events={eventsMock} />
       </div>
     </div>
