@@ -7,10 +7,7 @@ import { NextPageWithLayout } from '../page';
 
 const LoginPage: NextPageWithLayout = () => {
   return (
-    <div
-      // className='h-screen bg-[url("/login-banner1.png")] bg-cover bg-no-repeat bg-center'
-      className="flex flex-col items-center"
-    >
+    <div>
       <div>
         <Image
           className="z-0 bg-gradient-to-r from-black to-transparent"
@@ -21,16 +18,18 @@ const LoginPage: NextPageWithLayout = () => {
         ></Image>
         <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
       </div>
-      <div className="z-10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
-        <div>
-          <div className="mt-[22px] mb-[26px] sm:hidden">
-            <LogoSmall variant="yellow" onlyIcon={false} />
-          </div>
-          <div className="hidden sm:flex">
-            <Logo variant="yellow"></Logo>
+      <div className="flex flex-col sm:grid sm:grid-cols-2 h-screen place-items-center">
+        <div className="z-10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
+          <div>
+            <div className="mt-[22px] mb-[26px] sm:hidden">
+              <LogoSmall variant="yellow" onlyIcon={false} />
+            </div>
+            <div className="hidden sm:flex">
+              <Logo variant="yellow"></Logo>
+            </div>
           </div>
         </div>
-        <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px] right-2">
+        <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
           <Link href={'/'} className="absolute right-[12px] top-[12px]">
             <Close></Close>
           </Link>
