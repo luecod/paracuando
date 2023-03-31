@@ -20,14 +20,12 @@ const LoginPage: NextPageWithLayout = () => {
       </div>
       <div className="flex flex-col sm:grid sm:grid-cols-2 h-screen place-items-center">
         <div className="z-10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
-          <div>
-            <div className="mt-[22px] mb-[26px] sm:hidden">
-              <LogoSmall variant="yellow" onlyIcon={false} />
-            </div>
-            <div className="hidden sm:flex">
-              <Logo variant="yellow"></Logo>
-            </div>
-          </div>
+          <Link href={'/'} className="mt-[22px] mb-[26px] sm:hidden">
+            <LogoSmall variant="yellow" onlyIcon={false} />
+          </Link>
+          <Link href={'/'} className="hidden sm:flex">
+            <Logo variant="yellow"></Logo>
+          </Link>
         </div>
         <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
           <Link href={'/'} className="absolute right-[12px] top-[12px]">
@@ -44,7 +42,7 @@ const LoginPage: NextPageWithLayout = () => {
               Email
             </label>
             <input
-              className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px]"
+              className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px] p-[16px]"
               type="text"
               placeholder=" Email"
             />
@@ -52,7 +50,7 @@ const LoginPage: NextPageWithLayout = () => {
               Contraseña
             </label>
             <input
-              className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px]"
+              className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px] p-[16px]"
               type="password"
               placeholder=" Contraseña"
             />
@@ -65,7 +63,7 @@ const LoginPage: NextPageWithLayout = () => {
                 Recupérala aquí
               </Link>
             </p>
-            <button className="font-Roboto mt-[22px] py-[12.63px] bg-app-yellow text-black">
+            <button className="font-Inter mt-[22px] py-[12.63px] bg-app-yellow text-black">
               Iniciar sesión
             </button>
             <div className="mt-[14.74px] mb-[34px] flex justify-center">
