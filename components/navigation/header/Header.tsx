@@ -24,14 +24,14 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
           <div className="space-x-8 flex items-center">
             <Link
               className="text-app-blue sm:inline-flex space-x-2 hidden"
-              href={'/category/marcas-y-tiendas'}
+              href={'/profile/create-post'}
             >
               <Plus></Plus>
               <span>Crear Publicación</span>
             </Link>
             <Link
               className="sm:inline-flex space-x-2 hidden"
-              href={'/category/marcas-y-tiendas'}
+              href={'/profile/create-post'}
             >
               <EmptyHeart></EmptyHeart> <span>Mis Votos</span>
             </Link>
