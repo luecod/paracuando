@@ -4,6 +4,7 @@
 
 @layer base {
   html {
+    font-family: 'Inter', sans-serif;
     font-family: 'Roboto', sans-serif;
   }
 }
@@ -42,6 +43,15 @@
   .app-texto-2 {
     @apply font-medium text-sm leading-[16px] font-Roboto;
   }
+
+  .app-label-1 {
+    @apply font-Inter font-semibold text-sm leading-5;
+  }
+
+  .app-label-2 {
+    @apply font-Inter font-normal text-xs leading-5;
+  }
+
 
   .app-banner {
     @apply w-screen m-auto relative left-[calc(-50vw_+_50%)];

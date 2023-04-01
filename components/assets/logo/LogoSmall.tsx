@@ -12,8 +12,8 @@ const Logo: React.FC<ILogo> = ({ variant = 'white', onlyIcon = false }) => {
   };
   return (
     <svg
-      width="214"
-      height="190"
+      width="86.29"
+      height="85"
       viewBox="0 0 214 190"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
