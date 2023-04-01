@@ -2,10 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from '../../components/navigation/header/Header';
 import { User } from '../../lib/interfaces/user.interface';
-import { Layout } from '../../components/layout/Layout';
-import { NextPageWithLayout } from '../page';
 
-const ProfilePage: NextPageWithLayout = () => {
+// const ProfilePage: NextPageWithLayout = () => {
+const ProfilePage = () => {
   const userExample: User = {
     firstName: 'Luis',
     lastName: 'Valladolid',
@@ -82,8 +81,8 @@ const ProfilePage: NextPageWithLayout = () => {
   );
 };
 
-ProfilePage.getLayout = (page) => {
-  return <Layout>{page}</Layout>;
-};
+// ProfilePage.getLayout = (page) => {
+//   return <Layout>{page}</Layout>;
+// };
 
 export default ProfilePage;

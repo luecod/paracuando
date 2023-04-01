@@ -2,8 +2,6 @@ import Image from 'next/image';
 import Plus from '../../components/assets/svg/Plus';
 import Header from '../../components/navigation/header/Header';
 import { User } from '../../lib/interfaces/user.interface';
-import { Layout } from '../../components/layout/Layout';
-import { NextPageWithLayout } from '../page';
 const userExample: User = {
   firstName: 'Luis',
   lastName: 'Valladolid',
@@ -14,7 +12,8 @@ const userExample: User = {
   codePhone: '',
   phone: '',
 };
-const ConfigPage: NextPageWithLayout = () => {
+// const ConfigPage: NextPageWithLayout = () => {
+const ConfigPage = () => {
   return (
     <div>
       <Header isLoggedIn={true} currentUser={userExample} />
@@ -101,11 +100,10 @@ const ConfigPage: NextPageWithLayout = () => {
       </div>
     </div>
   );
-
 };
 
-ConfigPage.getLayout = (page) => {
-  return <Layout>{page}</Layout>;
-};
+// ConfigPage.getLayout = (page) => {
+//   return <Layout>{page}</Layout>;
+// };
 
 export default ConfigPage;

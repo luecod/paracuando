@@ -34,25 +34,39 @@ const Home: NextPageWithLayout = () => {
             type="text"
             placeholder="¿Qué quieres ver en tu ciudad?"
           /> */}
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-[9px] sm:gap-[10px]">
             <Link href={'/category/marcas-y-tiendas'}>
-              <button>Marcas y tiendas</button>
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+                Marcas y tiendas
+              </button>
             </Link>
             <Link href={'/category/artistas-y-conciertos'}>
-              <button>Artistas y conciertos</button>
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+                Artistas y conciertos
+              </button>
             </Link>
             <Link href={'/category/torneos'}>
-              <button>Torneos</button>
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+                Torneos
+              </button>
             </Link>
           </div>
         </div>
       </div>
       {/* CONTENIDO */}
       <div className="app-card ">
-        <EventSlider title='Los mas populares' subtitle='Lo que las personas piden más' events={eventsMock} />
+        <EventSlider
+          title="Los mas populares"
+          subtitle="Lo que las personas piden más"
+          events={eventsMock}
+        />
       </div>
       <div className=" app-card ">
-        <EventSlider title='Sugerencias para ti' subtitle='Publicaciones que te podrian interesar' events={eventsMock} />
+        <EventSlider
+          title="Sugerencias para ti"
+          subtitle="Publicaciones que te podrían interesar"
+          events={eventsMock}
+        />
       </div>
       <div className="h-[278px]  bg-[#F8F7FA]">
         <p>¡Hagámoslo más personal!</p>
@@ -68,7 +82,11 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       <div className="app-card">
-        <EventSlider title='Recientes' subtitle='Las personas últimamente están hablando de esto' events={eventsMock} />
+        <EventSlider
+          title="Recientes"
+          subtitle="Las personas últimamente están hablando de esto"
+          events={eventsMock}
+        />
       </div>
     </div>
   );
