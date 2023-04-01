@@ -1,11 +1,34 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import Logo from '../../components/assets/logo/Logo';
 import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
+import Hide from '../../components/assets/svg/Hide';
 import { NextPageWithLayout } from '../page';
 
+type FormValues = {
+  email: string;
+  password: string;
+};
+
 const LoginPage: NextPageWithLayout = () => {
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
+  const onSubmit = async (data: FormValues) => {
+    console.log(data);
+  };
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
   return (
     <div>
       <div>
@@ -37,23 +60,36 @@ const LoginPage: NextPageWithLayout = () => {
           <p className="font-normal text-sm leading-5 mt-[14px] mb-[22px]">
             Inicie sesión con los datos que ingresó durante su registro.
           </p>
-          <form className="flex flex-col gap-2" action="">
+          <form
+            className="flex flex-col gap-2"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <label className="app-label-1 text-[#F8F7FA]" htmlFor="">
               Email
             </label>
             <input
               className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px] p-[16px]"
               type="text"
-              placeholder=" Email"
+              placeholder=" ejemplo@mail.com"
+              {...register('email')}
             />
             <label className="app-label-1 text-[#F8F7FA]" htmlFor="">
               Contraseña
             </label>
-            <input
-              className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px] p-[16px]"
-              type="password"
-              placeholder=" Contraseña"
-            />
+            <div className="flex flex-col relative">
+              <input
+                className="min-h-[56px] bg-transparent border border-[#F8F7FA] rounded-[5px] p-[16px]"
+                type={showPassword ? 'text' : 'password'}
+                placeholder=" Contraseña"
+                {...register('password')}
+              />
+              <button
+                className="absolute top-1/2 right-3 transform -translate-y-1/2 focus:outline-none"
+                onClick={handleShowPassword}
+              >
+                <Hide></Hide>
+              </button>
+            </div>
             <p className="app-label-2">
               &#8226; ¿Olvidaste tu contraseña?{' '}
               <Link
