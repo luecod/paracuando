@@ -6,15 +6,14 @@ import Logo from '../../components/assets/logo/Logo';
 import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
 import Hide from '../../components/assets/svg/Hide';
-import { Layout } from '../../components/layout/Layout';
-import { NextPageWithLayout } from '../page';
 
 type FormValues = {
   email: string;
   password: string;
 };
 
-const LoginPage: NextPageWithLayout = () => {
+// const LoginPage: NextPageWithLayout = () => {
+const LoginPage = () => {
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: '',
@@ -118,8 +117,8 @@ const LoginPage: NextPageWithLayout = () => {
   );
 };
 
-LoginPage.getLayout = (page) => {
-  return <Layout>{page}</Layout>;
-};
+// LoginPage.getLayout = (page) => {
+//   return <Layout>{page}</Layout>;
+// };
 
 export default LoginPage;
