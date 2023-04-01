@@ -2,6 +2,8 @@ import Link from 'next/link';
 import Logo from '../components/assets/logo/Logo';
 import { Layout } from '../components/layout/Layout';
 import SearchBar from '../components/navigation/SearchBar';
+import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
+import { eventsMock } from '../lib/data/events.mock';
 import { useCategories } from '../lib/services/categories.services';
 import { NextPageWithLayout } from './page';
 
@@ -47,10 +49,10 @@ const Home: NextPageWithLayout = () => {
       </div>
       {/* CONTENIDO */}
       <div className="app-card ">
-        {/* <EventSlider title='Los mas populares' subtitle='Lo que las personas piden más' events={eventsMock} /> */}
+        <EventSlider title='Los mas populares' subtitle='Lo que las personas piden más' events={eventsMock} />
       </div>
       <div className=" app-card ">
-        {/* <EventSlider title='Sugerencias para ti' subtitle='Publicaciones que te podrian interesar' events={eventsMock} /> */}
+        <EventSlider title='Sugerencias para ti' subtitle='Publicaciones que te podrian interesar' events={eventsMock} />
       </div>
       <div className="h-[278px]  bg-[#F8F7FA]">
         <p>¡Hagámoslo más personal!</p>
@@ -66,7 +68,7 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       <div className="app-card">
-        {/* <EventSlider title='Recientes' subtitle='Las personas últimamente están hablando de esto' events={eventsMock} /> */}
+        <EventSlider title='Recientes' subtitle='Las personas últimamente están hablando de esto' events={eventsMock} />
       </div>
     </div>
   );

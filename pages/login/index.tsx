@@ -6,6 +6,7 @@ import Logo from '../../components/assets/logo/Logo';
 import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
 import Hide from '../../components/assets/svg/Hide';
+import { Layout } from '../../components/layout/Layout';
 import { NextPageWithLayout } from '../page';
 
 type FormValues = {
@@ -115,6 +116,10 @@ const LoginPage: NextPageWithLayout = () => {
       </div>
     </div>
   );
+};
+
+LoginPage.getLayout = (page) => {
+  return <Layout>{page}</Layout>;
 };
 
 export default LoginPage;
