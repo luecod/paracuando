@@ -58,12 +58,9 @@
   }
 
   .app-small-box {
-    @apply bg-white rounded-[23px] xs:rounded-[28px] max-h-[56px] xs:max-h-[64px] px-4 py-[15px] border border-black;
+    @apply bg-white rounded-[28px] max-h-[56px] xs:max-h-[64px] px-4 py-[15px] border border-app-grayDark;
   }
 
-  .app-card {
-    @apply h-[90vh] sm:h-[100vh] pt-12 pb-7;
-  }
 
   .text-gradient {
     background: rgb(255, 255, 255);
