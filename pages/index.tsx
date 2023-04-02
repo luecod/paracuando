@@ -21,7 +21,7 @@ const Home: NextPageWithLayout = () => {
   console.log({ data, error, isLoading });
 
   return (
-    <div>
+    <div className='container lg:max-w-6xl m-auto'>
       {/* HERO SECTION */}
       <div className='min-h-[488px] flex justify-center items-center flex-col bg-[url("/hero-banner.png")] bg-cover bg-center app-banner gap-5'>
         <div>

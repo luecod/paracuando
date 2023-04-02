@@ -9,7 +9,7 @@ const SearchBar = () => {
     // <div>SearchBar</div>
     <form onSubmit={submit} className="relative">
       <input
-        className="rounded-[23px] py-3 px-6 w-[305px] sm:w-[465px] bg-white"
+        className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[305px] sm:w-[465px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
         type="text"
         placeholder="¿Qué quieres ver en tu ciudad?"
       />
