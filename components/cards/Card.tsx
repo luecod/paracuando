@@ -54,7 +54,7 @@ const Card: React.FC<ICardProps> = ({ title, content, url, image, votes }) => {
             {url}
           </Link>
         </div> */}
-          <div className="mt-[9px] flex gap-2">
+          <div className="mt-[9px] flex gap-2 items-center">
             <VotePerson className="text-left" />
             <p className="text-sm font-medium">{votes} votos</p>
           </div>
