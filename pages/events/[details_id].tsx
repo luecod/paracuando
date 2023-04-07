@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import EventButton from '../../components/assets/svg/EventButton';
-import Loupe from '../../components/assets/svg/Loupe';
 import VotePerson from '../../components/assets/svg/VotePerson';
 import { Layout } from '../../components/layout/Layout';
+import CategoryAndSearch from '../../components/navigation/categoryAndSearch/CategoryAndSearch';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../../lib/data/events.mock';
 import { NextPageWithLayout } from '../page';
@@ -59,38 +58,7 @@ export const DetailsPage: NextPageWithLayout = () => {
   const { details_id } = router.query;
   return (
     <div className="max-w-[1920px] m-auto mb-[94px] md:mb-[103px] flex flex-col">
-      <div className="h-[114px] pt-[38px] shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
-        <div className="sm:container lg:max-w-6xl flex justify-between items-center m-auto">
-          <div className="ml-[21px] sm:ml-0 self-start md:hidden p-[10.11px] rounded-full border border-app-gray">
-            <EventButton></EventButton>
-          </div>
-          <div className="hidden text-app-gray self-start md:flex gap-[9px]">
-            <button className="border bg-white border-app-gray px-[18.43px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link className="" href={'category/marcas-y-tiendas'}>
-                Marcas y tiendas
-              </Link>
-            </button>
-            <button className="border bg-white border-app-gray px-[18.42px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link href={'/category/artistas-y-conciertos'}>
-                Artistas y conciertos
-              </Link>
-            </button>
-            <button className="border bg-white border-app-gray px-[19px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link href={'/category/torneos'}>Torneos</Link>
-            </button>
-          </div>
-          <div className="self-end relative mr-[20px] md:mr-[0px]">
-            <input
-              className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[305px] sm:w-[373px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
-              type="text"
-              placeholder="¿Qué quieres ver en tu ciudad?"
-            />
-            <button className="btn btn-success absolute right-[21px] top-[14px]">
-              <Loupe />
-            </button>
-          </div>
-        </div>
-      </div>
+      <CategoryAndSearch></CategoryAndSearch>
       <div className="container lg:max-w-6xl m-auto mt-[54px] lg:mt-[101px]">
         {/* detalles */}
         <div className="flex flex-col items-center md:grid md:grid-cols-[379px_451px] lg:grid-cols-[379px_539px] md:grid-rows-[309.25px_71.75px] md:justify-center md:gap-x-[22px]">
