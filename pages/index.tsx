@@ -55,9 +55,9 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="mt-[73px] ">
+      <div className="mt-[73px]">
         <EventSlider
-          title="Los mas populares"
+          title="Los más populares"
           subtitle="Lo que las personas piden más"
           events={eventsMock}
         />
