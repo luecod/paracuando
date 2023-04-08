@@ -11,18 +11,18 @@ const CategoryAndSearch = () => {
         </div>
         <div className="hidden text-app-gray self-start md:flex gap-[9px]">
           <Link className="" href={'/category/marcas-y-tiendas'}>
-            <button className="border bg-white border-app-gray px-[18.43px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
+            <button className="border bg-white border-app-gray px-[18.43px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px] hover:bg-app-blue hover:text-white">
               Marcas y tiendas
             </button>
           </Link>
           <Link href={'/category/artistas-y-conciertos'}>
-            <button className="border bg-white border-app-gray px-[18.42px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
+            <button className="border bg-white border-app-gray px-[18.42px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px] hover:bg-app-blue hover:text-white">
               Artistas y conciertos
             </button>
           </Link>
 
           <Link href={'/category/torneos'}>
-            <button className="border bg-white border-app-gray px-[19px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
+            <button className="border bg-white border-app-gray px-[19px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px] hover:bg-app-blue hover:text-white">
               Torneos
             </button>
           </Link>

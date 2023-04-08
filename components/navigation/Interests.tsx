@@ -9,10 +9,18 @@ const Interests = () => {
         gustos
       </p>
       <div className="mt-[22px] flex flex-wrap gap-[11px] max-w-content overflow-auto">
-        <button className="app-small-box">Artistas Mexicanos</button>
-        <button className="app-small-box">Tiendas de ropa</button>
-        <button className="app-small-box px-[34px]">Rock</button>
-        <button className="app-small-box">Restaurantes</button>
+        <button className="app-small-box hover:bg-app-blue hover:text-white">
+          Artistas Mexicanos
+        </button>
+        <button className="app-small-box hover:bg-app-blue hover:text-white">
+          Tiendas de ropa
+        </button>
+        <button className="app-small-box px-[34px] hover:bg-app-blue hover:text-white">
+          Rock
+        </button>
+        <button className="app-small-box hover:bg-app-blue hover:text-white">
+          Restaurantes
+        </button>
       </div>
       <div>
         <button className="mt-[47px] mb-[42px] text-app-blue font-normal text-[16px] leading-[18.75px]">

@@ -37,17 +37,17 @@ const Home: NextPageWithLayout = () => {
           /> */}
           <div className="flex items-center justify-center gap-[9px] sm:gap-[10px]">
             <Link href={'/category/marcas-y-tiendas'}>
-              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7] hover:bg-app-blue hover:text-white">
                 Marcas y tiendas
               </button>
             </Link>
             <Link href={'/category/artistas-y-conciertos'}>
-              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7] hover:bg-app-blue hover:text-white">
                 Artistas y conciertos
               </button>
             </Link>
             <Link href={'/category/torneos'}>
-              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7]">
+              <button className="bg-white px-[14px] py-[7.5px] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-[#A7A6A7] hover:bg-app-blue hover:text-white">
                 Torneos
               </button>
             </Link>
