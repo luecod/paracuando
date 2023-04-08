@@ -1,52 +1,123 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import EventButton from '../../components/assets/svg/EventButton';
-import Loupe from '../../components/assets/svg/Loupe';
+import VotePerson from '../../components/assets/svg/VotePerson';
 import { Layout } from '../../components/layout/Layout';
+import CategoryAndSearch from '../../components/navigation/categoryAndSearch/CategoryAndSearch';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../../lib/data/events.mock';
 import { NextPageWithLayout } from '../page';
 
+interface iEventExample {
+  id: string;
+  user_id: string;
+  publication_type_id: number;
+  city_id: string;
+  title: string;
+  description: string;
+  content: string;
+  reference_link: string;
+  votes_count: number;
+  publication_type: {
+    id: string;
+    name: string;
+    description: string;
+  };
+  images: [
+    {
+      publication_id: string;
+      image_url: string;
+    }
+  ];
+}
 export const DetailsPage: NextPageWithLayout = () => {
   const router = useRouter();
+  const eventExample: iEventExample = {
+    id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
+    user_id: '52143c3e-154e-4c4b-bf39-bc3c3503e99f',
+    publication_type_id: 1,
+    city_id: '52143c3e-154e-4c4b-bf39-bc3c3503e99f',
+    title: 'Concierto de Lady Gaga',
+    description: 'Artista / Pop / Rock',
+    content:
+      'El concierto con la temática de Lady gaga en Las Vegas. El concierto con la temática de Lady gaga en Las Vegas.El concierto con la temática.',
+    reference_link: 'ladygaga.com',
+    votes_count: 2,
+    publication_type: {
+      id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
+      name: 'Concierto',
+      description: 'Concierto de música',
+    },
+    images: [
+      {
+        publication_id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
+        image_url: '/mock-event-image.png',
+      },
+    ],
+  };
   const { details_id } = router.query;
   return (
     <div className="max-w-[1920px] m-auto mb-[94px] md:mb-[103px] flex flex-col">
-      <div className="h-[114px] pt-[38px] shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
-        <div className="container lg:max-w-6xl flex justify-between items-center m-auto">
-          <div className="ml-[21px] self-start md:hidden p-[10.11px] rounded-full border border-app-gray">
-            <EventButton></EventButton>
-          </div>
-          <div className="hidden text-app-gray self-start md:flex gap-[9px]">
-            <button className="border bg-white border-app-gray px-[18.43px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link className="" href={'category/marcas-y-tiendas'}>
-                Marcas y tiendas
+      <CategoryAndSearch></CategoryAndSearch>
+      <div className="container lg:max-w-6xl m-auto mt-[54px] lg:mt-[101px]">
+        {/* detalles */}
+        <div className="flex flex-col items-center md:grid md:grid-cols-[379px_451px] lg:grid-cols-[379px_539px] md:grid-rows-[309.25px_71.75px] md:justify-center md:gap-x-[22px]">
+          <div className="max-w-[374px] md:max-w-[379px] sm:max-w-[600px] sm:px-6 md:px-0">
+            <p className="font-medium text-[16px] leading-[18.75px]">
+              {eventExample.description}
+            </p>
+            <h2 className="font-black text-[36px] leading-[42.19px] md:text-[48px] md:leading-[56.25px]">
+              {eventExample.title}
+            </h2>
+            <p className="mt-[22px] font-normal text-[15px] leading-[17.58px] text-app-grayDark">
+              {eventExample.content}
+            </p>
+            <p className="mt-[33px] text-app-blue max-w-[374px] font-medium text-[14px] leading-4">
+              <Link href={eventExample.reference_link}>
+                {eventExample.reference_link}
               </Link>
-            </button>
-            <button className="border bg-white border-app-gray px-[18.42px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link href={'/category/artistas-y-conciertos'}>
-                Artistas y conciertos
-              </Link>
-            </button>
-            <button className="border bg-white border-app-gray px-[19px] rounded-[26px] py-[14.5px] font-medium text-[13px] leading-[15.23px]">
-              <Link href={'/category/torneos'}>Torneos</Link>
-            </button>
+            </p>
+            <div className="mt-[16px] flex gap-2 items-center">
+              <VotePerson className="text-left" />
+              <p className="text-sm font-medium text-[14px] leading-4">
+                {eventExample.votes_count} votos
+              </p>
+            </div>
           </div>
-          <div className="self-end relative mr-[20px] md:mr-[0px]">
-            <input
-              className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[305px] sm:w-[373px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
-              type="text"
-              placeholder="¿Qué quieres ver en tu ciudad?"
-            />
-            <button className="btn btn-success absolute right-[21px] top-[14px]">
-              <Loupe />
+          <div className="mt-[25px] w-[374px] md:hidden">
+            <Image
+              src={eventExample.images[0].image_url}
+              alt=""
+              sizes="(max-width: 600px) 100vw, 600px"
+              height={252}
+              width={374}
+            ></Image>
+          </div>
+          <div className="hidden w-[451px] lg:hidden md:block md:col-start-2 md:row-start-1 md:row-end-3">
+            <Image
+              src={eventExample.images[0].image_url}
+              alt=""
+              sizes="(max-width: 600px) 100vw, 600px"
+              height={381}
+              width={451}
+            ></Image>
+          </div>
+          <div className="hidden w-[539px] md:hidden lg:block lg:col-start-2 lg:row-start-1 lg:row-end-3">
+            <Image
+              src={eventExample.images[0].image_url}
+              alt=""
+              sizes="(max-width: 600px) 100vw, 600px"
+              height={381}
+              width={539}
+            ></Image>
+          </div>
+          <div className="mt-[31px] md:mt-[26px]">
+            <button className="bg-app-blue rounded-[23px] py-[13.5px] px-[167.65px] text-white font-medium text-[16px] leading-[18.75px]">
+              Votar
             </button>
           </div>
         </div>
-      </div>
-      <div className="container lg:max-w-6xl m-auto md:mt-[101px]">
-        {/* detalles */}
-        <div></div>
+
         {/* personal */}
         <div className="min-h-[278px] pd-[42px] mt-[82px] md:[72px] bg-[#F8F7FA] pt-[27px] pl-[24px] text-app-grayDark">
           <h3 className="font-medium text-[24px] leading-[28.13px]">

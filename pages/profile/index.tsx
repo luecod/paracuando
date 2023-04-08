@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Card from '../../components/cards/Card';
 import Header from '../../components/navigation/header/Header';
+import { eventsMock } from '../../lib/data/events.mock';
 import { User } from '../../lib/interfaces/user.interface';
 
 // const ProfilePage: NextPageWithLayout = () => {
@@ -29,49 +31,61 @@ const ProfilePage = () => {
         ></Image>
         <div className="mt-[36.5px] flex gap-[11px]">
           <Link href={'/'}>
-            <button className="px-[40px] py-[7.5px] border border-[#A7A6A7] rounded-[23px]">
+            <button className="px-[40px] py-[7.5px] border border-[#A7A6A7] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-app-gray hover:bg-app-blue hover:text-white">
               Mis Votos
             </button>
           </Link>
           <Link href={'/'}>
-            <button className="px-[15.5px] py-[7.5px] border border-[#A7A6A7] rounded-[23px]">
+            <button className="px-[15.5px] py-[7.5px] border border-[#A7A6A7] rounded-[23px] font-medium text-[13px] leading-[15.23px] text-app-gray hover:bg-app-blue hover:text-white">
               Mis Publicaciones
             </button>
           </Link>
         </div>
       </div>
-      <div className="mt-[65px] bg-app-blue min-h-[1207px]">
-        <div></div>
-        <div></div>
-        <div></div>
+
+      {/* cards */}
+      <div className="container m-auto mt-[65px] lg:max-w-[941px] flex flex-col md:flex-row md:flex-wrap">
+        {eventsMock.map((event, index) => (
+          <div className="m-auto mb-[43px] sm:mb-[45px]" key={index}>
+            <Card
+              image={event.image}
+              title={event.title}
+              content={event.short_description}
+              url={event.url}
+              votes={event.votes}
+            />
+          </div>
+        ))}
       </div>
-      <div className="mt-[82px] flex justify-center">
-        <button className="text-white bg-app-blue rounded-[31px] py-[13.5px] px-[18px] sm:hidden">
+
+      {/* pages */}
+      <div className="flex justify-center">
+        <button className="mt-[22px] text-white bg-app-blue rounded-[31px] py-[13.5px] px-[18px] md:hidden">
           Ver más
         </button>
-        <ul className="hidden pl-0 list-none sm:flex sm:gap-[3.5px] mt-0 mb-0">
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+        <ul className="mt-[37px] hidden pl-0 list-none md:flex md:gap-[3.5px] mb-0">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             1
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             2
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             3
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             4
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             5
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             6
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]">
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white">
             7
           </li>
-          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px]"></li>
+          <li className="cursor-pointer w-[42.15px] h-[42.15px] flex justify-center items-center rounded-[2.96px] hover:bg-app-blue hover:text-white"></li>
         </ul>
       </div>
       <div className="mt-[65px] min-h-[182px] relative">
