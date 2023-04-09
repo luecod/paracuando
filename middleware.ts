@@ -10,7 +10,7 @@ export async function middleware(request: NextRequest) {
   if (!jwt) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
-
+  return NextResponse.next();
   // try {
   //   const { payload } = await jwtVerify(
   //     jwt.value,

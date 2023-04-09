@@ -5,7 +5,7 @@ import Interests from '../components/navigation/Interests';
 import SearchBar from '../components/navigation/SearchBar';
 import { EventSlider } from '../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../lib/data/events.mock';
-import { useCategories } from '../lib/services/categories.services';
+import { usePublications } from '../lib/services/publications.services';
 import { NextPageWithLayout } from './page';
 
 export interface IEvents {
@@ -17,10 +17,17 @@ export interface IEvents {
 }
 
 const Home: NextPageWithLayout = () => {
-  const { data, error, isLoading } = useCategories();
+  // const { data, error, isLoading } = useCategories();
+  // console.log({ data, error, isLoading });
 
-  console.log({ data, error, isLoading });
+  const {
+    data: publicationResponse,
+    error: publicationError,
+    isLoading: publicationLoading,
+  } = usePublications();
 
+  const publications = publicationResponse?.results; //change to let
+  console.log({ publications });
   return (
     <div className="container lg:max-w-6xl m-auto">
       {/* HERO SECTION */}
@@ -55,9 +62,9 @@ const Home: NextPageWithLayout = () => {
         </div>
       </div>
       {/* CONTENIDO */}
-      <div className="mt-[73px] ">
+      <div className="mt-[73px]">
         <EventSlider
-          title="Los mas populares"
+          title="Los más populares"
           subtitle="Lo que las personas piden más"
           events={eventsMock}
         />

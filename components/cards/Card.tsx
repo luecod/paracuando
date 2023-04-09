@@ -32,7 +32,7 @@ const Card: React.FC<ICardProps> = ({ title, content, url, image, votes }) => {
             {title}
           </h2>
         </div> */}
-          <h3 className="mt-[15px] font-semibold text-[20px] leading-[23.44px]">
+          <h3 className="mt-[15px] font-semibold text-[20px] leading-[23.44px] h-[31px] overflow-hidden">
             {title}
           </h3>
           {/* <div>
@@ -40,7 +40,7 @@ const Card: React.FC<ICardProps> = ({ title, content, url, image, votes }) => {
             {content}
           </p>
         </div> */}
-          <p className="mt-[5px] font-normal text-[15px] leading-[17.58px] text-app-grayDark">
+          <p className="mt-[5px] font-normal text-[15px] leading-[17.58px] text-app-grayDark h-[72px] overflow-hidden">
             {content}
           </p>
           <p className="mt-[12px] font-medium text-[14px] leading-[16.41px] text-app-blue">

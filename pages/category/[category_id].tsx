@@ -37,19 +37,21 @@ export const CategoryPage: NextPageWithLayout = () => {
         <div>
           <Image src={banner} alt="" fill objectFit="cover"></Image>
         </div>
-        <div className="absolute px-5 pt-[23px] flex flex-col">
-          <p className="text-white font-medium text-[16px] leading-[18.75px]">
-            {/* Home / Marcas */}
-            {content}
-          </p>
-          <h2 className="mt-[23px] text-app-yellow font-black text-[48px] leading-[56.25px]">
-            {/* Marcas y tiendas */}
-            {title}
-          </h2>
-          <p className="mt-[6px] text-white font-medium text-[16px] leading-[18.75px]">
-            {/* Descubre las marcas y tiendas que la gente quiere cerca */}
-            {description}
-          </p>
+        <div className="relative lg:max-w-6xl m-auto">
+          <div className="absolute px-5 pt-[23px] flex flex-col">
+            <p className="text-white font-medium text-[16px] leading-[18.75px]">
+              {/* Home / Marcas */}
+              {content}
+            </p>
+            <h2 className="mt-[23px] text-app-yellow font-black text-[48px] leading-[56.25px]">
+              {/* Marcas y tiendas */}
+              {title}
+            </h2>
+            <p className="mt-[6px] text-white font-medium text-[16px] leading-[18.75px]">
+              {/* Descubre las marcas y tiendas que la gente quiere cerca */}
+              {description}
+            </p>
+          </div>
         </div>
       </div>
 
