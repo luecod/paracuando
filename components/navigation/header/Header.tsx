@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { User } from '../../../lib/interfaces/user.interface';
 import { IconLogo } from '../../assets/logo/IconLogo';
 import DownArrow from '../../assets/svg/DownArrow';
@@ -15,10 +15,31 @@ interface IHeader {
 
 const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
   const [isActive, setIsActive] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
+  const divRef = useRef<HTMLDivElement>(null);
 
   const handleToggleMobile = () => {
+    setIsOpen(!isOpen);
     setIsActive(!isActive);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (divRef.current && !divRef.current.contains(event.target as Node)) {
+        console.log('Clic fuera del div');
+        setIsActive(false);
+        console.log(isOpen);
+        // Llama a la función de devolución de llamada aquí
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    console.log('useEffect');
+    return () => {
+      console.log('useEffect return');
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isOpen, divRef]);
   return (
     <div className="">
       <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
@@ -76,7 +97,7 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
           )}
         </div>
       </div>
-      <div className="" onClick={handleToggleMobile}>
+      <div ref={divRef} onClick={handleToggleMobile}>
         <NavbarMobile isActive={isActive} />
       </div>
     </div>
