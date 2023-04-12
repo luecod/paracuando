@@ -57,7 +57,11 @@ const ChangePassPage = () => {
         ></Image>
       </div>
       <div className="relative">
-        <div className="w-[378px] h-[571px] bg-black bg-opacity-70 rounded-[20px] text-app-grayLighter pt-[57px] px-[39px] m-auto mt-[83px] flex flex-col border border-app-gray sm:w-[557px] sm:h-[529px] sm:pt-[114px] sm:mt-[152px]">
+        <div
+          className={`w-[378px] h-[571px] bg-black bg-opacity-70 rounded-[20px] text-app-grayLighter pt-[57px] px-[39px] m-auto mt-[83px] flex flex-col border border-app-gray sm:w-[557px] sm: sm:pt-[92px] sm:mt-[151px] sm:pb-[70.74px]" ${
+            showFirstChecker && !validPassword ? 'sm:h-[600px]' : 'sm:h-[539px]'
+          } `}
+        >
           <h2 className="font-semibold text-[32px] leading-[37.5px]">
             Elige una contraseña
           </h2>
@@ -121,7 +125,7 @@ const ChangePassPage = () => {
               &#8226; Las contraseñas no coinciden
             </p>
           )}
-          <button className="bg-app-yellow font-semibold text-[16px] leading-4 mt-[62px] rounded-[5px] px-[18px] h-[46px] font-Inter text-black">
+          <button className="bg-app-yellow font-semibold text-[16px] leading-4 mt-[62px] rounded-[5px] px-[18px] min-h-[46px] font-Inter text-black">
             <p className="">Cambiar contraseña</p>
           </button>
         </div>
