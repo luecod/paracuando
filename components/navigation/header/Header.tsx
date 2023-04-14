@@ -6,7 +6,7 @@ import DownArrow from '../../assets/svg/DownArrow';
 import EmptyHeart from '../../assets/svg/EmptyHeart';
 import IconPerson from '../../assets/svg/IconPerson';
 import Plus from '../../assets/svg/Plus';
-import NavbarMobile from '../navbarMobile/NavbarMobile';
+import NavbarMobile from '../menuAndNavbar/NavbarMobile';
 
 interface IHeader {
   isLoggedIn: boolean;
@@ -15,31 +15,26 @@ interface IHeader {
 
 const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
   const [isActive, setIsActive] = React.useState(false);
-  const [isOpen, setIsOpen] = React.useState(false);
+  // const [isOpen, setIsOpen] = React.useState(false);
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleToggleMobile = () => {
-    setIsOpen(!isOpen);
     setIsActive(!isActive);
   };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (divRef.current && !divRef.current.contains(event.target as Node)) {
-        console.log('Clic fuera del div');
         setIsActive(false);
-        console.log(isOpen);
-        // Llama a la función de devolución de llamada aquí
       }
+      console.log(isActive + '+++');
     }
 
     document.addEventListener('mousedown', handleClickOutside);
-    console.log('useEffect');
     return () => {
-      console.log('useEffect return');
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [isOpen, divRef]);
+  }, [divRef]);
   return (
     <div className="">
       <div className="bg-black text-white flex items-center justify-between px-4 sm:px-12 py-4 min-h-[70px] text-sm">
@@ -64,16 +59,8 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
                 <EmptyHeart></EmptyHeart> <span>Mis Votos</span>
               </Link>
               <button
-                className="items-center inline-flex space-x-2 sm:hidden"
+                className="items-center inline-flex space-x-2"
                 onClick={handleToggleMobile}
-              >
-                <IconPerson></IconPerson>
-                <span>{currentUser.email}</span>
-                <DownArrow></DownArrow>
-              </button>
-              <button
-                className="hidden items-center sm:inline-flex space-x-2"
-                // onClick={handleToggleMobile}
               >
                 <IconPerson></IconPerson>
                 <span>{currentUser.email}</span>
@@ -97,7 +84,8 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
           )}
         </div>
       </div>
-      <div ref={divRef} onClick={handleToggleMobile}>
+
+      <div id="myDiv" ref={divRef} onClick={handleToggleMobile}>
         <NavbarMobile isActive={isActive} />
       </div>
     </div>
