@@ -68,7 +68,7 @@ export default function SingUpPage() {
   return (
     <div>
       <Image
-        className="z-0 bg-gradient-to-r from-black to-transparent"
+        className="min-h-[775px] md:min-w-[935px] md:min-h-[550px]"
         src={'/login-banner1.png'}
         alt=""
         fill
@@ -86,7 +86,7 @@ export default function SingUpPage() {
           </Link>
         </div>
 
-        <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
+        <div className="bg-black bg-opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
           <div className="w-full text-left flex flex-col">
             <Link href={'/'} className="absolute right-[12px] top-[12px]">
               <Close></Close>
@@ -169,8 +169,8 @@ export default function SingUpPage() {
               </div>
               <div className="relative max-w-full"></div>
               <p className="app-label-2">
-                &#8226; La contraseña debe tener mayúsculas, minúsculas y
-                números
+                &#8226; La contraseña debe tener mayúsculas, minúsculas, números
+                y mínimo 8 caracteres
               </p>
               <button className="font-Inter mt-[18px] py-[12.63px] bg-app-yellow text-black">
                 Crear cuenta

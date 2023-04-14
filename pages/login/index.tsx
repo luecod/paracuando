@@ -31,16 +31,15 @@ const LoginPage = () => {
   };
   return (
     <div>
-      <div>
-        <Image
-          className="z-0 bg-gradient-to-r from-black to-transparent"
-          src={'/login-banner1.png'}
-          alt=""
-          fill
-          objectFit="cover"
-        ></Image>
-        <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
-      </div>
+      <Image
+        className="min-h-[650px] sm:min-h-[540px]"
+        src={'/login-banner1.png'}
+        alt=""
+        fill
+        objectFit="cover"
+      ></Image>
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
+
       <div className="flex flex-col sm:grid sm:grid-cols-2 h-screen place-items-center">
         <div className="z-10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
           <Link href={'/'} className="mt-[22px] mb-[26px] sm:hidden">
@@ -50,7 +49,7 @@ const LoginPage = () => {
             <Logo variant="yellow"></Logo>
           </Link>
         </div>
-        <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
+        <div className="bg-black bg-opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
           <Link href={'/'} className="absolute right-[12px] top-[12px]">
             <Close></Close>
           </Link>
