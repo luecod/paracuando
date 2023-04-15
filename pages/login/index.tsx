@@ -1,11 +1,14 @@
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Logo from '../../components/assets/logo/Logo';
 import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
 import Hide from '../../components/assets/svg/Hide';
+import { login } from '../../lib/services/auth.service';
 
 type FormValues = {
   email: string;
@@ -14,14 +17,24 @@ type FormValues = {
 
 // const LoginPage: NextPageWithLayout = () => {
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm({
+  const router = useRouter();
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       email: '',
       password: '',
     },
   });
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    login(data)
+      .then((res) => {
+        Cookies.set('token', res.data.token);
+        router.push('/');
+        // console.log(res);
+      })
+      .catch((err) => {
+        console.log('Credenciales incorrectas' + err);
+        reset();
+      });
   };
 
   const [showPassword, setShowPassword] = useState(false);

@@ -4,9 +4,14 @@ import Card from '../../components/cards/Card';
 import Header from '../../components/navigation/header/Header';
 import { eventsMock } from '../../lib/data/events.mock';
 import { User } from '../../lib/interfaces/user.interface';
+import { useUserMe } from '../../lib/services/user.service';
 
 // const ProfilePage: NextPageWithLayout = () => {
 const ProfilePage = () => {
+  const { data: userME } = useUserMe();
+
+  console.log(userME);
+
   const userExample: User = {
     firstName: 'Luis',
     lastName: 'Valladolid',
@@ -19,7 +24,8 @@ const ProfilePage = () => {
   };
   return (
     <div>
-      <Header isLoggedIn={true} currentUser={userExample} />
+      {/* <Header isLoggedIn={true} currentUser={userExample} /> */}
+      <Header />
       <div className="flex flex-col items-center relative">
         <div className="bg-app-blue min-h-[129px] min-w-full"></div>
         <Image

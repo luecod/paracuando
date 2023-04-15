@@ -16,7 +16,8 @@ const userExample: User = {
 const ConfigPage = () => {
   return (
     <div>
-      <Header isLoggedIn={true} currentUser={userExample} />
+      {/* <Header isLoggedIn={true} currentUser={userExample} /> */}
+      <Header />
       <div className="bg-app-blue min-h-[129px] min-w-full">
         <h1 className="app-title-1 text-white pt-[37px] pl-[170px]">Perfil</h1>
       </div>
