@@ -16,11 +16,7 @@ interface IHeader {
 
 const Header = () => {
   const { data: userME } = useUserMe();
-  // console.log(userME);
-  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
-  // setIsLoggedIn(userME ? true : false);
   const isLoggedIn = userME ? true : false;
-  // const isLoggedIn = true;
 
   const [isActive, setIsActive] = React.useState(false);
   const divRef = useRef<HTMLDivElement>(null);
