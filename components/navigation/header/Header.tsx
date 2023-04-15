@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
 import { User } from '../../../lib/interfaces/user.interface';
+import { useUserMe } from '../../../lib/services/user.service';
 import { IconLogo } from '../../assets/logo/IconLogo';
 import DownArrow from '../../assets/svg/DownArrow';
 import EmptyHeart from '../../assets/svg/EmptyHeart';
@@ -14,8 +15,12 @@ interface IHeader {
 }
 
 const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
+  const { data: userME } = useUserMe();
+  // console.log(userME);
+
+  // isLoggedIn = userME ? true : false;
+
   const [isActive, setIsActive] = React.useState(false);
-  // const [isOpen, setIsOpen] = React.useState(false);
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleToggleMobile = () => {
@@ -23,12 +28,12 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
   };
 
   useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
+    const handleClickOutside = (event: MouseEvent) => {
       if (divRef.current && !divRef.current.contains(event.target as Node)) {
         setIsActive(false);
       }
       console.log(isActive + '+++');
-    }
+    };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
@@ -85,7 +90,7 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
         </div>
       </div>
 
-      <div id="myDiv" ref={divRef} onClick={handleToggleMobile}>
+      <div ref={divRef} onClick={handleToggleMobile}>
         <NavbarMobile isActive={isActive} />
       </div>
     </div>

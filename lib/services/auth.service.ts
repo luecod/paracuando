@@ -6,4 +6,9 @@ function createUser(user: User) {
   return axios.post(`/auth/sign-up`, user);
 }
 
-export { createUser };
+function login(data: { email: string; password: string }) {
+  return axios.post(`/auth/login`, data);
+}
+
+export { createUser, login };
+

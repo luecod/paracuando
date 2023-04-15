@@ -4,9 +4,14 @@ import Card from '../../components/cards/Card';
 import Header from '../../components/navigation/header/Header';
 import { eventsMock } from '../../lib/data/events.mock';
 import { User } from '../../lib/interfaces/user.interface';
+import { useUserMe } from '../../lib/services/user.service';
 
 // const ProfilePage: NextPageWithLayout = () => {
 const ProfilePage = () => {
+  const { data: userME } = useUserMe();
+
+  console.log(userME);
+
   const userExample: User = {
     firstName: 'Luis',
     lastName: 'Valladolid',
