@@ -14,11 +14,13 @@ interface IHeader {
   currentUser: User;
 }
 
-const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
+const Header = () => {
   const { data: userME } = useUserMe();
   // console.log(userME);
-
-  // isLoggedIn = userME ? true : false;
+  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  // setIsLoggedIn(userME ? true : false);
+  const isLoggedIn = userME ? true : false;
+  // const isLoggedIn = true;
 
   const [isActive, setIsActive] = React.useState(false);
   const divRef = useRef<HTMLDivElement>(null);
@@ -32,7 +34,6 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
       if (divRef.current && !divRef.current.contains(event.target as Node)) {
         setIsActive(false);
       }
-      console.log(isActive + '+++');
     };
 
     document.addEventListener('mousedown', handleClickOutside);
@@ -59,7 +60,7 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
               </Link>
               <Link
                 className="sm:inline-flex space-x-2 hidden"
-                href={'/profile/create-post'}
+                href={'/profile'}
               >
                 <EmptyHeart></EmptyHeart> <span>Mis Votos</span>
               </Link>
@@ -68,7 +69,7 @@ const Header: React.FC<IHeader> = ({ isLoggedIn, currentUser }) => {
                 onClick={handleToggleMobile}
               >
                 <IconPerson></IconPerson>
-                <span>{currentUser.email}</span>
+                <span>{userME?.email}</span>
                 <DownArrow></DownArrow>
               </button>
             </div>

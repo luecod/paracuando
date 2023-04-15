@@ -28,7 +28,7 @@ const LoginPage = () => {
     login(data)
       .then((res) => {
         Cookies.set('token', res.data.token);
-        router.push('/profile');
+        router.push('/');
         // console.log(res);
       })
       .catch((err) => {

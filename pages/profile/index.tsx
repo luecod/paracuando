@@ -24,7 +24,8 @@ const ProfilePage = () => {
   };
   return (
     <div>
-      <Header isLoggedIn={true} currentUser={userExample} />
+      {/* <Header isLoggedIn={true} currentUser={userExample} /> */}
+      <Header />
       <div className="flex flex-col items-center relative">
         <div className="bg-app-blue min-h-[129px] min-w-full"></div>
         <Image

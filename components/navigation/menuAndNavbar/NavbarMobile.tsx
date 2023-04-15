@@ -15,7 +15,10 @@ const NavbarMobile: React.FC<INavbarMobile> = ({ isActive = false }) => {
   const router = useRouter();
   const logout = () => {
     Cookie.remove('token');
+    // window.location.reload();
     router.push('/');
+    router.reload();
+    // router.push('/');
   };
 
   if (!isActive) return null;
