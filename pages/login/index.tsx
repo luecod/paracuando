@@ -24,15 +24,28 @@ const LoginPage = () => {
       password: '',
     },
   });
+
+  const validateForm = (data: FormValues) => {
+    if (data.email === '' || data.password === '') {
+      alert('Por favor, complete todos los campos');
+      return false;
+    }
+    return true;
+  };
+
   const onSubmit = async (data: FormValues) => {
+    if (!validateForm(data)) {
+      return;
+    }
     login(data)
       .then((res) => {
         Cookies.set('token', res.data.token);
-        router.push('/');
-        // console.log(res);
+        alert('Bienvenido');
+        router.push('/profile');
       })
       .catch((err) => {
-        console.log('Credenciales incorrectas' + err);
+        console.log(err);
+        alert('Usuario o contraseña incorrectos');
         reset();
       });
   };
@@ -97,6 +110,7 @@ const LoginPage = () => {
               />
               <button
                 className="absolute top-1/2 right-3 transform -translate-y-1/2 focus:outline-none"
+                type="button"
                 onClick={handleShowPassword}
               >
                 <Hide></Hide>
