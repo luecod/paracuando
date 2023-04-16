@@ -54,6 +54,7 @@ const ProfilePage = () => {
         {eventsMock.map((event, index) => (
           <div className="m-auto mb-[43px] sm:mb-[45px]" key={index}>
             <Card
+              id={'1'}
               image={event.image}
               title={event.title}
               content={event.short_description}
