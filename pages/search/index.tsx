@@ -6,6 +6,7 @@ import { Layout } from '../../components/layout/Layout';
 import SearchBarBig from '../../components/navigation/SearchBarBig';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
 import { eventsMock } from '../../lib/data/events.mock';
+import { usePublications } from '../../lib/services/publications.services';
 import { NextPageWithLayout } from '../page';
 
 const EventExample = {
@@ -18,6 +19,20 @@ const EventExample = {
 };
 
 const SearchPage: NextPageWithLayout = () => {
+  const {
+    data: publicationResponse,
+    error: publicationError,
+    isLoading: publicationLoading,
+  } = usePublications();
+
+  const publications = publicationResponse?.results;
+  const latest = publications
+    ?.slice()
+    .sort(
+      (a, b) =>
+        new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
+    );
+
   const [activeCategory, setActiveCategory] = useState(2);
   const [activeMenu, setActiveMenu] = useState(false);
 
@@ -168,11 +183,13 @@ const SearchPage: NextPageWithLayout = () => {
 
       {/* last card */}
       <div className="relative my-[84px] pt-[10px] pl-[18px] pb-[19px]">
-        <EventSlider
-          title="Recientes"
-          subtitle="Las personas últimamente están hablando de esto"
-          events={eventsMock}
-        />
+        {latest && (
+          <EventSlider
+            title="Recientes"
+            subtitle="Las personas últimamente están hablando de esto"
+            events={latest}
+          />
+        )}
       </div>
     </div>
   );
