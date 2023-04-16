@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface IEventSlider {
   title?: string;
   subtitle?: string;
-  events: IEvents[];
+  events: Publication[];
 }
 
 export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
@@ -50,17 +50,33 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
           //   },
           // }}
         >
-          {events?.map((event, index) => (
-            <SwiperSlide key={index}>
-              <Card
-                image={event.image}
-                title={event.title}
-                content={event.short_description}
-                url={event.url}
-                votes={event.votes}
-              />
-            </SwiperSlide>
-          ))}
+          {events?.map(
+            (event, index) =>
+              event.images[0] &&
+              event.images[0].image_url && (
+                <SwiperSlide key={index}>
+                  <Card
+                    image={event.images[0].image_url}
+                    title={event.title}
+                    content={event.content}
+                    url={event.reference_link}
+                    votes={event.votes_count}
+                  />
+                </SwiperSlide>
+              )
+
+              // <SwiperSlide key={index}>
+              //   {event.images[0] && event.images[0].image_url && (
+              //     <Card
+              //       image={event.images[0].image_url}
+              //       title={event.title}
+              //       content={event.content}
+              //       url={event.reference_link}
+              //       votes={event.votes_count}
+              //     />
+              //   )}
+              // </SwiperSlide>
+          )}
           <div className="hidden sm:flex items-center absolute top-0 bottom-0 -right-20 left-auto cursor-pointer">
             <SlideNextButton />
           </div>
@@ -75,7 +91,7 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
 
 // some-inner-component.jsx
 import { useSwiper } from 'swiper/react';
-import { IEvents } from '../../../pages';
+import { Publication } from '../../../lib/interfaces/publications.interface';
 import Card from '../../cards/Card';
 
 interface ISlideNextButton {
