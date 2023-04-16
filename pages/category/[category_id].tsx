@@ -4,10 +4,29 @@ import { Layout } from '../../components/layout/Layout';
 import Interests from '../../components/navigation/Interests';
 import CategoryAndSearch from '../../components/navigation/categoryAndSearch/CategoryAndSearch';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
-import { eventsMock } from '../../lib/data/events.mock';
+import { usePublications } from '../../lib/services/publications.services';
 import { NextPageWithLayout } from '../page';
 
 export const CategoryPage: NextPageWithLayout = () => {
+  const {
+    data: publicationResponse,
+    error: publicationError,
+    isLoading: publicationLoading,
+  } = usePublications();
+
+  const publications = publicationResponse?.results;
+
+  const mostPopular = publications
+    ?.slice()
+    .sort((a, b) => b?.votes_count - a.votes_count);
+
+  const latest = publications
+    ?.slice()
+    .sort(
+      (a, b) =>
+        new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
+    );
+
   const router = useRouter();
   const { category_id } = router.query;
   let content,
@@ -59,29 +78,35 @@ export const CategoryPage: NextPageWithLayout = () => {
 
       <div className="container m-auto">
         <div className="mt-[60px] ">
-          <EventSlider
-            title="Los mas populares"
-            subtitle="Lo que las personas piden más"
-            events={eventsMock}
-          />
+          {mostPopular && (
+            <EventSlider
+              title="Los mas populares"
+              subtitle="Lo que las personas piden más"
+              events={mostPopular}
+            />
+          )}
         </div>
 
         <div className="mt-[40px]">
-          <EventSlider
-            title="Sugerencias para ti"
-            subtitle="Publicaciones que te podrían interesar"
-            events={eventsMock}
-          />
+          {publications && (
+            <EventSlider
+              title="Sugerencias para ti"
+              subtitle="Publicaciones que te podrían interesar"
+              events={publications}
+            />
+          )}
         </div>
 
         <Interests></Interests>
 
         <div className="mt-[13px] mb-[94px]">
-          <EventSlider
-            title="Recientes"
-            subtitle="Las personas últimamente están hablando de esto"
-            events={eventsMock}
-          />
+          {latest && (
+            <EventSlider
+              title="Recientes"
+              subtitle="Las personas últimamente están hablando de esto"
+              events={latest}
+            />
+          )}
         </div>
       </div>
 

@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import React, { useEffect, useRef } from 'react';
-import { User } from '../../../lib/interfaces/user.interface';
 import { useUserMe } from '../../../lib/services/user.service';
 import { IconLogo } from '../../assets/logo/IconLogo';
 import DownArrow from '../../assets/svg/DownArrow';
@@ -8,11 +7,6 @@ import EmptyHeart from '../../assets/svg/EmptyHeart';
 import IconPerson from '../../assets/svg/IconPerson';
 import Plus from '../../assets/svg/Plus';
 import NavbarMobile from '../menuAndNavbar/NavbarMobile';
-
-interface IHeader {
-  isLoggedIn: boolean;
-  currentUser: User;
-}
 
 const Header = () => {
   const { data: userME } = useUserMe();
