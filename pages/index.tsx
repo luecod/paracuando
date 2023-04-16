@@ -15,12 +15,11 @@ const Home: NextPageWithLayout = () => {
   } = usePublications();
 
   const publications = publicationResponse?.results;
-  console.log({ publications });
+  console.log(publications);
 
   const mostPopular = publications
     ?.slice()
     .sort((a, b) => b?.votes_count - a.votes_count);
-  console.log({ mostPopular });
 
   const latest = publications
     ?.slice()
@@ -28,7 +27,6 @@ const Home: NextPageWithLayout = () => {
       (a, b) =>
         new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
     );
-  console.log({ latest });
   return (
     <div className="container lg:max-w-6xl m-auto">
       {/* HERO SECTION */}
