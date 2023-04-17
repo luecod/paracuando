@@ -25,13 +25,19 @@ const SearchPage: NextPageWithLayout = () => {
     (publication) =>
       publication.title.toLowerCase() === search_title?.toString().toLowerCase()
   );
-  console.log(generalResults);
 
-  const resultsFilters = (category: string) => {
-    return generalResults?.filter(
-      (publication) => publication.publication_type.name === category
-    );
-  };
+  const brandsResults = generalResults?.filter(
+    (publication) => publication.publication_type.name === 'Marcas y Tiendas'
+  );
+
+  const artistsResults = generalResults?.filter(
+    (publication) =>
+      publication.publication_type.name === 'Artistas y Conciertos'
+  );
+
+  const tournamentsResults = generalResults?.filter(
+    (publication) => publication.publication_type.name === 'Torneos'
+  );
 
   const latest = publications
     ?.slice()
@@ -150,32 +156,117 @@ const SearchPage: NextPageWithLayout = () => {
         </div>
       </div>
 
-      {/* Cards */}
-      {generalResults?.map((event, index) =>
-        event.images[0] && event.images[0].image_url ? (
-          <div key={index} className="m-auto">
-            <HorizontalCard
-              id={event.id}
-              image={event.images[0].image_url}
-              title={event.title}
-              content={event.content}
-              url={event.reference_link}
-              votes={event.votes_count}
-            />
-          </div>
-        ) : (
-          <div key={index} className="m-auto">
-            <HorizontalCard
-              id={event.id}
-              image={'/Imagen_no_encontrada.webp'}
-              title={event.title}
-              content={event.content}
-              url={event.reference_link}
-              votes={event.votes_count}
-            />
-          </div>
-        )
-      )}
+      {/* All results */}
+      {activeCategory === 1 &&
+        generalResults?.map((event, index) =>
+          event.images[0] && event.images[0].image_url ? (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={event.images[0].image_url}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          ) : (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={'/Imagen_no_encontrada.webp'}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          )
+        )}
+
+      {/* Brands and stores results */}
+      {activeCategory === 2 &&
+        brandsResults?.map((event, index) =>
+          event.images[0] && event.images[0].image_url ? (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={event.images[0].image_url}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          ) : (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={'/Imagen_no_encontrada.webp'}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          )
+        )}
+
+      {/* Artists and concerts results */}
+      {activeCategory === 3 &&
+        artistsResults?.map((event, index) =>
+          event.images[0] && event.images[0].image_url ? (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={event.images[0].image_url}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          ) : (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={'/Imagen_no_encontrada.webp'}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          )
+        )}
+
+      {/* Tournaments results */}
+      {activeCategory === 4 &&
+        tournamentsResults?.map((event, index) =>
+          event.images[0] && event.images[0].image_url ? (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={event.images[0].image_url}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          ) : (
+            <div key={index} className="m-auto">
+              <HorizontalCard
+                id={event.id}
+                image={'/Imagen_no_encontrada.webp'}
+                title={event.title}
+                content={event.content}
+                url={event.reference_link}
+                votes={event.votes_count}
+              />
+            </div>
+          )
+        )}
 
       {/* pagination */}
       <div className="flex justify-center text-[#988989] mt-[62px]">
