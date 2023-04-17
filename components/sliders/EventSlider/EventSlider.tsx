@@ -50,33 +50,30 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
           //   },
           // }}
         >
-          {events?.map(
-            (event, index) =>
-              event.images[0] &&
-              event.images[0].image_url && (
-                <SwiperSlide key={index}>
-                  <Card
-                    id={event.id}
-                    image={event.images[0].image_url}
-                    title={event.title}
-                    content={event.content}
-                    url={event.reference_link}
-                    votes={event.votes_count}
-                  />
-                </SwiperSlide>
-              )
-
-            // <SwiperSlide key={index}>
-            //   {event.images[0] && event.images[0].image_url && (
-            //     <Card
-            //       image={event.images[0].image_url}
-            //       title={event.title}
-            //       content={event.content}
-            //       url={event.reference_link}
-            //       votes={event.votes_count}
-            //     />
-            //   )}
-            // </SwiperSlide>
+          {events?.map((event, index) =>
+            event.images[0] && event.images[0].image_url ? (
+              <SwiperSlide key={index}>
+                <Card
+                  id={event.id}
+                  image={event.images[0].image_url}
+                  title={event.title}
+                  content={event.content}
+                  url={event.reference_link}
+                  votes={event.votes_count}
+                />
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide key={index}>
+                <Card
+                  id={event.id}
+                  image={'/Imagen_no_encontrada.webp'}
+                  title={event.title}
+                  content={event.content}
+                  url={event.reference_link}
+                  votes={event.votes_count}
+                />
+              </SwiperSlide>
+            )
           )}
           <div className="hidden sm:flex items-center absolute top-0 bottom-0 -right-20 left-auto cursor-pointer">
             <SlideNextButton />

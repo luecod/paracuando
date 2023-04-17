@@ -15,7 +15,6 @@ const Home: NextPageWithLayout = () => {
   } = usePublications();
 
   const publications = publicationResponse?.results;
-  console.log(publications);
 
   const mostPopular = publications
     ?.slice()

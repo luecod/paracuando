@@ -9,28 +9,6 @@ import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
 import { usePublications } from '../../lib/services/publications.services';
 import { NextPageWithLayout } from '../page';
 
-interface iEventExample {
-  id: string;
-  user_id: string;
-  publication_type_id: number;
-  city_id: string;
-  title: string;
-  description: string;
-  content: string;
-  reference_link: string;
-  votes_count: number;
-  publication_type: {
-    id: string;
-    name: string;
-    description: string;
-  };
-  images: [
-    {
-      publication_id: string;
-      image_url: string;
-    }
-  ];
-}
 export const DetailsPage: NextPageWithLayout = () => {
   const router = useRouter();
   const { details_id } = router.query;
@@ -58,29 +36,6 @@ export const DetailsPage: NextPageWithLayout = () => {
         new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
     );
 
-  const eventExample: iEventExample = {
-    id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
-    user_id: '52143c3e-154e-4c4b-bf39-bc3c3503e99f',
-    publication_type_id: 1,
-    city_id: '52143c3e-154e-4c4b-bf39-bc3c3503e99f',
-    title: 'Concierto de Lady Gaga',
-    description: 'Artista / Pop / Rock',
-    content:
-      'El concierto con la temática de Lady gaga en Las Vegas. El concierto con la temática de Lady gaga en Las Vegas.El concierto con la temática.',
-    reference_link: 'ladygaga.com',
-    votes_count: 2,
-    publication_type: {
-      id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
-      name: 'Concierto',
-      description: 'Concierto de música',
-    },
-    images: [
-      {
-        publication_id: '1ab23d06-3298-4e8b-b034-4fc64711273b',
-        image_url: '/mock-event-image.png',
-      },
-    ],
-  };
   return (
     <div className="max-w-[1920px] m-auto mb-[94px] md:mb-[103px] flex flex-col">
       <CategoryAndSearch></CategoryAndSearch>
@@ -110,31 +65,61 @@ export const DetailsPage: NextPageWithLayout = () => {
             </div>
           </div>
           <div className="mt-[25px] w-[374px] md:hidden">
-            <Image
-              src={eventDetails.images[0].image_url}
-              alt=""
-              sizes="(max-width: 600px) 100vw, 600px"
-              height={252}
-              width={374}
-            ></Image>
+            {eventDetails.images[0] && eventDetails.images[0].image_url ? (
+              <Image
+                src={eventDetails.images[0].image_url}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            ) : (
+              <Image
+                src={'/Imagen_no_encontrada.webp'}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            )}
           </div>
           <div className="hidden w-[451px] lg:hidden md:block md:col-start-2 md:row-start-1 md:row-end-3">
-            <Image
-              src={eventDetails.images[0].image_url}
-              alt=""
-              sizes="(max-width: 600px) 100vw, 600px"
-              height={381}
-              width={451}
-            ></Image>
+            {eventDetails.images[0] && eventDetails.images[0].image_url ? (
+              <Image
+                src={eventDetails.images[0].image_url}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            ) : (
+              <Image
+                src={'/Imagen_no_encontrada.webp'}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            )}
           </div>
           <div className="hidden w-[539px] md:hidden lg:block lg:col-start-2 lg:row-start-1 lg:row-end-3">
-            <Image
-              src={eventDetails.images[0].image_url}
-              alt=""
-              sizes="(max-width: 600px) 100vw, 600px"
-              height={381}
-              width={539}
-            ></Image>
+            {eventDetails.images[0] && eventDetails.images[0].image_url ? (
+              <Image
+                src={eventDetails.images[0].image_url}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            ) : (
+              <Image
+                src={'/Imagen_no_encontrada.webp'}
+                alt=""
+                sizes="(max-width: 600px) 100vw, 600px"
+                height={252}
+                width={374}
+              ></Image>
+            )}
           </div>
           <div className="mt-[31px] md:mt-[26px]">
             <button className="bg-app-blue rounded-[23px] py-[13.5px] px-[167.65px] text-white font-medium text-[16px] leading-[18.75px]">
