@@ -13,7 +13,7 @@
   .app-container {
     @apply m-auto;
     /*p-4 container lg:max-w-6xl*/
-    
+
   }
 
   .app-title-1 {
@@ -60,6 +60,7 @@
   .app-small-box {
     @apply bg-white rounded-[28px] max-h-[56px] xs:max-h-[64px] px-4 py-[15px] border border-app-grayDark;
   }
+
 
 
   .text-gradient {
