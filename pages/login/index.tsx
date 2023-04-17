@@ -9,11 +9,30 @@ import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
 import Hide from '../../components/assets/svg/Hide';
 import { login } from '../../lib/services/auth.service';
+import { showLoginNotification } from '../../public/Notifications/LoginNoti';
+import { showDenyNotification } from '../../public/Notifications/LoginNoti';
+import { newPostNotification } from '../../public/Notifications/UserNoti';
+import { showVoteNotification } from '../../public/Notifications/UserNoti'
+
+// showLoginNotification('Has iniciado sesión exitosamente.');
+
+// showDenyNotification('Tu direccion de email o contraseña son incorrectos, intenta de nuevo!');
+
+// showVoteNotification('Tu voto se ah registrado correctamente!');
+
+// newPostNotification('Creaste una nueva publicacion!');
+
+// mostrarNotificacionExito('La operación se ha completado con éxito.');
+
 
 type FormValues = {
   email: string;
   password: string;
 };
+
+
+
+
 
 // const LoginPage: NextPageWithLayout = () => {
 const LoginPage = () => {
