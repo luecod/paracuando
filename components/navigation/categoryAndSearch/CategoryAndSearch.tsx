@@ -1,8 +1,20 @@
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import EventButton from '../../assets/svg/EventButton';
 import Loupe from '../../assets/svg/Loupe';
 
 const CategoryAndSearch = () => {
+  const router = useRouter();
+  const [inputValue, setInputValue] = useState('');
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+
+  const handleClick = () => {
+    router.push(`/search/${inputValue}`);
+  };
   return (
     <div className="h-[114px] pt-[38px] shadow-[0_2px_4px_rgba(0,0,0,0.25)]">
       <div className="sm:container lg:max-w-6xl flex justify-between items-center m-auto">
@@ -32,8 +44,13 @@ const CategoryAndSearch = () => {
             className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[305px] sm:w-[373px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
             type="text"
             placeholder="¿Qué quieres ver en tu ciudad?"
+            value={inputValue}
+            onChange={handleInputChange}
           />
-          <button className="btn btn-success absolute right-[21px] top-[14px]">
+          <button
+            className="btn btn-success absolute right-[21px] top-[14px]"
+            onClick={handleClick}
+          >
             <Loupe />
           </button>
         </div>

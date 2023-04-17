@@ -8,6 +8,12 @@ import { usePublications } from '../../lib/services/publications.services';
 import { NextPageWithLayout } from '../page';
 
 export const CategoryPage: NextPageWithLayout = () => {
+  const router = useRouter();
+  const { category_id } = router.query;
+
+  let content, title, description;
+  let banner = '';
+
   const {
     data: publicationResponse,
     error: publicationError,
@@ -27,12 +33,6 @@ export const CategoryPage: NextPageWithLayout = () => {
         new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
     );
 
-  const router = useRouter();
-  const { category_id } = router.query;
-  let content,
-    title,
-    description,
-    banner = '';
   if (category_id === 'marcas-y-tiendas') {
     title = 'Marcas y tiendas';
     content = 'Home / Marcas';
