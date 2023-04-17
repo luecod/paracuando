@@ -22,14 +22,12 @@ const Card: React.FC<ICardProps> = ({
   image,
   votes,
 }) => {
-  // const titleKebabCase = title.replace(/\s+/g, '-').toLowerCase();
-
   const router = useRouter();
 
   const handleClick = () => {
-    // router.push(`/events/${titleKebabCase}`);
     router.push(`/events/${id}`);
   };
+
   return (
     <div className="m-1.5">
       <div className="w-[299px] h-[454px] rounded-[20px] bg-app-grayLighter shadow-[0_2px_4px_rgba(0,0,0,0.25)] flex flex-col overflow-auto">

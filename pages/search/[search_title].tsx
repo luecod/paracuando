@@ -1,24 +1,19 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import OptionPoints from '../../components/assets/svg/OptionPoints';
 import HorizontalCard from '../../components/cards/HorizontalCard';
 import { Layout } from '../../components/layout/Layout';
+import EmptySearchResults from '../../components/navigation/EmptySearchResults';
 import SearchBarBig from '../../components/navigation/SearchBarBig';
 import { EventSlider } from '../../components/sliders/EventSlider/EventSlider';
-import { eventsMock } from '../../lib/data/events.mock';
 import { usePublications } from '../../lib/services/publications.services';
 import { NextPageWithLayout } from '../page';
 
-const EventExample = {
-  title: 'Concierto de Lady Gaga',
-  content:
-    'El concierto con la temática de Lady gaga en Las Vegas. El concierto con la temática de Lady gaga en Las Vegas. El concierto con la temática.',
-  votes: 99203,
-  url: 'ladygaga.com',
-  image: '/mock-event-image.png',
-};
-
 const SearchPage: NextPageWithLayout = () => {
+  const router = useRouter();
+  const { search_title } = router.query;
+
   const {
     data: publicationResponse,
     error: publicationError,
@@ -26,6 +21,18 @@ const SearchPage: NextPageWithLayout = () => {
   } = usePublications();
 
   const publications = publicationResponse?.results;
+  const generalResults = publications?.filter(
+    (publication) =>
+      publication.title.toLowerCase() === search_title?.toString().toLowerCase()
+  );
+  console.log(generalResults);
+
+  const resultsFilters = (category: string) => {
+    return generalResults?.filter(
+      (publication) => publication.publication_type.name === category
+    );
+  };
+
   const latest = publications
     ?.slice()
     .sort(
@@ -33,7 +40,7 @@ const SearchPage: NextPageWithLayout = () => {
         new Date(b?.created_at).getTime() - new Date(a?.created_at).getTime()
     );
 
-  const [activeCategory, setActiveCategory] = useState(2);
+  const [activeCategory, setActiveCategory] = useState(1);
   const [activeMenu, setActiveMenu] = useState(false);
 
   const handleMenu = () => {
@@ -47,6 +54,8 @@ const SearchPage: NextPageWithLayout = () => {
     }
   };
 
+  if (publicationLoading) return <div>Loading...</div>;
+  if (generalResults?.length === 0) return <EmptySearchResults />;
   return (
     <div className="max-w-[1920px] m-auto flex flex-col">
       <div className="min-h-[108px] relative">
@@ -142,17 +151,31 @@ const SearchPage: NextPageWithLayout = () => {
       </div>
 
       {/* Cards */}
-      {eventsMock.map((event, index) => (
-        <div key={index} className="m-auto">
-          <HorizontalCard
-            title={event.title}
-            content={event.short_description}
-            url={event.url}
-            image={event.image}
-            votes={event.votes}
-          />
-        </div>
-      ))}
+      {generalResults?.map((event, index) =>
+        event.images[0] && event.images[0].image_url ? (
+          <div key={index} className="m-auto">
+            <HorizontalCard
+              id={event.id}
+              image={event.images[0].image_url}
+              title={event.title}
+              content={event.content}
+              url={event.reference_link}
+              votes={event.votes_count}
+            />
+          </div>
+        ) : (
+          <div key={index} className="m-auto">
+            <HorizontalCard
+              id={event.id}
+              image={'/Imagen_no_encontrada.webp'}
+              title={event.title}
+              content={event.content}
+              url={event.reference_link}
+              votes={event.votes_count}
+            />
+          </div>
+        )
+      )}
 
       {/* pagination */}
       <div className="flex justify-center text-[#988989] mt-[62px]">
