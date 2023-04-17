@@ -1,8 +1,7 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Loupe from '../assets/svg/Loupe';
-
-const SearchBar = () => {
+const SearchBarBig = () => {
   const router = useRouter();
   const [inputValue, setInputValue] = useState('');
 
@@ -13,11 +12,11 @@ const SearchBar = () => {
   const handleClick = () => {
     router.push(`/search/${inputValue}`);
   };
+
   return (
-    // <div>SearchBar</div>
-    <div className="relative">
+    <div className="relative m-auto md:m-0">
       <input
-        className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[305px] sm:w-[465px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
+        className="rounded-[23px] pt-[15px] pb-[14px] px-6 w-[394px] md:w-[465px] bg-white font-normal text-[13px] leading-[15.23px] text-app-gray border border-app-gray"
         type="text"
         placeholder="¿Qué quieres ver en tu ciudad?"
         value={inputValue}
@@ -33,4 +32,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default SearchBarBig;

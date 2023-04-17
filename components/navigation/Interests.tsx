@@ -1,6 +1,6 @@
 const Interests = () => {
   return (
-    <div className="min-h-[278px] pd-[42px] mt-[52px] bg-[#F8F7FA] pt-[27px] pl-[24px] text-app-grayDark">
+    <div className="min-h-[278px] pd-[42px] mt-[52px] bg-[#F8F7FA] pt-[27px] pl-[24px] text-app-grayDark lg:max-w-6xl m-auto">
       <h3 className="font-medium text-[24px] leading-[28.13px]">
         ¡Hagámoslo más personal!
       </h3>

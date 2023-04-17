@@ -1,11 +1,14 @@
+import Cookies from 'js-cookie';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Logo from '../../components/assets/logo/Logo';
 import LogoSmall from '../../components/assets/logo/LogoSmall';
 import { Close } from '../../components/assets/svg/Close';
 import Hide from '../../components/assets/svg/Hide';
+import { login } from '../../lib/services/auth.service';
 import { showLoginNotification } from '../../public/Notifications/LoginNoti';
 import { showDenyNotification } from '../../public/Notifications/LoginNoti';
 import { newPostNotification } from '../../public/Notifications/UserNoti';
@@ -22,7 +25,6 @@ import { showVoteNotification } from '../../public/Notifications/UserNoti'
 // mostrarNotificacionExito('La operación se ha completado con éxito.');
 
 
-
 type FormValues = {
   email: string;
   password: string;
@@ -34,14 +36,37 @@ type FormValues = {
 
 // const LoginPage: NextPageWithLayout = () => {
 const LoginPage = () => {
-  const { register, handleSubmit } = useForm({
+  const router = useRouter();
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: {
       email: '',
       password: '',
     },
   });
+
+  const validateForm = (data: FormValues) => {
+    if (data.email === '' || data.password === '') {
+      alert('Por favor, complete todos los campos');
+      return false;
+    }
+    return true;
+  };
+
   const onSubmit = async (data: FormValues) => {
-    console.log(data);
+    if (!validateForm(data)) {
+      return;
+    }
+    login(data)
+      .then((res) => {
+        Cookies.set('token', res.data.token);
+        alert('Bienvenido');
+        router.push('/profile');
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('Usuario o contraseña incorrectos');
+        reset();
+      });
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -51,16 +76,15 @@ const LoginPage = () => {
   };
   return (
     <div>
-      <div>
-        <Image
-          className="z-0 bg-gradient-to-r from-black to-transparent"
-          src={'/login-banner1.png'}
-          alt=""
-          fill
-          objectFit="cover"
-        ></Image>
-        <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
-      </div>
+      <Image
+        className="min-h-[650px] sm:min-h-[540px]"
+        src={'/login-banner1.png'}
+        alt=""
+        fill
+        objectFit="cover"
+      ></Image>
+      <div className="absolute inset-0 bg-gradient-to-r from-black to-transparent"></div>
+
       <div className="flex flex-col sm:grid sm:grid-cols-2 h-screen place-items-center">
         <div className="z-10 flex flex-col items-center sm:flex-row sm:items-center sm:justify-center">
           <Link href={'/'} className="mt-[22px] mb-[26px] sm:hidden">
@@ -70,7 +94,7 @@ const LoginPage = () => {
             <Logo variant="yellow"></Logo>
           </Link>
         </div>
-        <div className="bg-black opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
+        <div className="bg-black bg-opacity-80 text-white border border-white rounded-[20px] px-[38px] mx-[18px] max-w-[378px] relative sm:max-w-[557px] sm:max-h-[560px]">
           <Link href={'/'} className="absolute right-[12px] top-[12px]">
             <Close></Close>
           </Link>
@@ -105,6 +129,7 @@ const LoginPage = () => {
               />
               <button
                 className="absolute top-1/2 right-3 transform -translate-y-1/2 focus:outline-none"
+                type="button"
                 onClick={handleShowPassword}
               >
                 <Hide></Hide>

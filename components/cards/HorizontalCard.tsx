@@ -14,7 +14,7 @@ interface ICardProps {
   votes: number;
 }
 
-const Card: React.FC<ICardProps> = ({
+const HorizontalCard: React.FC<ICardProps> = ({
   id,
   title,
   content,
@@ -27,33 +27,35 @@ const Card: React.FC<ICardProps> = ({
   const handleClick = () => {
     router.push(`/events/${id}`);
   };
-
   return (
-    <div className="m-1.5">
-      <div className="w-[299px] h-[454px] rounded-[20px] bg-app-grayLighter shadow-[0_2px_4px_rgba(0,0,0,0.25)] flex flex-col overflow-auto">
-        <div className="relative w-[299px] h-[239px] rounded-t-[20px]">
-          <Image className="rounded-t-[20px]" fill src={image} alt=""></Image>
-          <button>
-            <Heart
-              className="absolute right-[22px] -bottom-[15px]"
-              isActive={false}
-            />
-          </button>
+    <div className="m-1.5 mb-5">
+      <div className="relative w-[394px] h-[197px] rounded-[20px] bg-app-grayLighter shadow-[0_2px_4px_rgba(0,0,0,0.25)] flex gap-6 md:w-[850px] md:gap-[28px] lg:gap-[58px] lg:w-[934px] lg:h-[239px] sm:w-[550px]">
+        <button className="absolute right-[13px]">
+          <Heart isActive={false} />
+        </button>
+
+        <div className="relative w-[121px] h-[197px] rounded-[20px] lg:h-[239px] md:w-[299px] sm:w-[200px]">
+          <Image
+            className="rounded-[20px]"
+            fill
+            objectFit="cover"
+            src={image}
+            alt=""
+          ></Image>
         </div>
-        <div className="h-[215px] flex flex-col pl-[23px] pr-[22px]">
+
+        <div className="relative h-[215px] w-[200px] flex flex-col md:w-[410px] sm:w-[300px]">
           <button className="flex" onClick={handleClick}>
-            <h3 className="mt-[15px] font-semibold text-[20px] leading-[23.44px] h-[31px] overflow-hidden">
+            <h3 className="mt-[34px] font-semibold text-[16px] leading-[18.75px] h-[19px] overflow-hidden">
               {title}
             </h3>
           </button>
-
           <p className="mt-[5px] font-normal text-[15px] leading-[17.58px] text-app-grayDark h-[72px] overflow-hidden">
             {content}
           </p>
-          <p className="mt-[12px] font-medium text-[14px] leading-[16.41px] text-app-blue">
+          <p className="mt-[12px] font-medium text-[12px] leading-[14.06px] text-app-blue">
             <Link href={url}>{url}</Link>
           </p>
-
           <div className="mt-[9px] flex gap-2 items-center">
             <VotePerson className="text-left" />
             <p className="text-sm font-medium">{votes} votos</p>
@@ -64,4 +66,4 @@ const Card: React.FC<ICardProps> = ({
   );
 };
 
-export default Card;
+export default HorizontalCard;

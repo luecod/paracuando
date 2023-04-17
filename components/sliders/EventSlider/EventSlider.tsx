@@ -6,12 +6,12 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 interface IEventSlider {
   title?: string;
   subtitle?: string;
-  events: IEvents[];
+  events: Publication[];
 }
 
 export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
   return (
-    <div>
+    <div className="lg:max-w-6xl m-auto">
       <div className="mt-[10px]">
         <h2 className="app-title-2">{title}</h2>
         <p className="mt-[9px] mb-[35px] app-subtitle-2">{subtitle}</p>
@@ -50,17 +50,31 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
           //   },
           // }}
         >
-          {events?.map((event, index) => (
-            <SwiperSlide key={index}>
-              <Card
-                image={event.image}
-                title={event.title}
-                content={event.short_description}
-                url={event.url}
-                votes={event.votes}
-              />
-            </SwiperSlide>
-          ))}
+          {events?.map((event, index) =>
+            event.images[0] && event.images[0].image_url ? (
+              <SwiperSlide key={index}>
+                <Card
+                  id={event.id}
+                  image={event.images[0].image_url}
+                  title={event.title}
+                  content={event.content}
+                  url={event.reference_link}
+                  votes={event.votes_count}
+                />
+              </SwiperSlide>
+            ) : (
+              <SwiperSlide key={index}>
+                <Card
+                  id={event.id}
+                  image={'/Imagen_no_encontrada.webp'}
+                  title={event.title}
+                  content={event.content}
+                  url={event.reference_link}
+                  votes={event.votes_count}
+                />
+              </SwiperSlide>
+            )
+          )}
           <div className="hidden sm:flex items-center absolute top-0 bottom-0 -right-20 left-auto cursor-pointer">
             <SlideNextButton />
           </div>
@@ -75,7 +89,7 @@ export const EventSlider: FC<IEventSlider> = ({ title, subtitle, events }) => {
 
 // some-inner-component.jsx
 import { useSwiper } from 'swiper/react';
-import { IEvents } from '../../../pages';
+import { Publication } from '../../../lib/interfaces/publications.interface';
 import Card from '../../cards/Card';
 
 interface ISlideNextButton {
