@@ -12,19 +12,20 @@ const userExample: User = {
   codePhone: '',
   phone: '',
 };
-// const ConfigPage: NextPageWithLayout = () => {
 const ConfigPage = () => {
   return (
     <div>
-      {/* <Header isLoggedIn={true} currentUser={userExample} /> */}
       <Header />
       <div className="bg-app-blue min-h-[129px] min-w-full">
-        <h1 className="app-title-1 text-white pt-[37px] pl-[170px]">Perfil</h1>
+        <h1 className="app-title-1 text-white pt-[37px] pl-[50px] lg:pl-[170px] ">
+          Perfil
+        </h1>
       </div>
       <div className="max-w-[940px] m-auto mt-[77px] flex flex-col">
         <div>
-          <h2 className="app-title-2">Información de Contacto</h2>
-          <div className="mt-[34px] flex gap-[80px] justify-center">
+          <h2 className="app-title-2 ml-5 lg:ml-0">Información de Contacto</h2>
+
+          <div className="mt-[34px] flex flex-col md:flex-row gap-[80px] justify-center">
             <div className="flex flex-col items-center">
               <div className="min-w-[220px] min-h-[206px] rounded-[15px] bg-[#D9D9D9] mb-[19px] flex items-center justify-center">
                 <Plus></Plus>
@@ -33,10 +34,11 @@ const ConfigPage = () => {
                 Agrega una foto para tu perfil
               </p>
             </div>
-            <div className="flex flex-col gap-[53.37px] justify-center">
-              <div className="relative">
+
+            <div className="flex flex-col gap-[53.37px] justify-center items-center">
+              <div className="relative flex flex-col px-5">
                 <input
-                  className="min-w-[640px] min-h-[49.63px] border border-[#7D7D7D] rounded-[11px]"
+                  className="w-[314px] sm:w-[540px] max-w-[640px] md:min-w-[500px] lg:min-w-[640px] min-h-[49.63px] border border-[#7D7D7D] rounded-[11px] px-5"
                   type="text"
                 />
                 <label
@@ -46,9 +48,9 @@ const ConfigPage = () => {
                   First Name
                 </label>
               </div>
-              <div className="relative">
+              <div className="relative flex flex-col px-5">
                 <input
-                  className="min-w-[640px] min-h-[49.63px] border border-[#7D7D7D] rounded-[11px]"
+                  className="w-[314px] sm:w-[540px] max-w-[640px] md:min-w-[500px] lg:min-w-[640px] min-h-[49.63px] border border-[#7D7D7D] rounded-[11px] px-5"
                   type="text"
                 />
                 <label
@@ -62,8 +64,8 @@ const ConfigPage = () => {
           </div>
         </div>
         <div className="mt-[57px]">
-          <h2 className="app-title-2">Mis intereses</h2>
-          <div className="mt-[29px] flex gap-5">
+          <h2 className="app-title-2 ml-5 lg:ml-0">Mis intereses</h2>
+          <div className="mt-[29px] flex justify-center gap-5 flex-wrap">
             <div className="flex flex-col gap-[19px] items-center">
               <div className="min-w-[300px] min-h-[152px] rounded-[15px] bg-[#D9D9D9] flex items-center justify-center">
                 <button>
@@ -102,9 +104,5 @@ const ConfigPage = () => {
     </div>
   );
 };
-
-// ConfigPage.getLayout = (page) => {
-//   return <Layout>{page}</Layout>;
-// };
 
 export default ConfigPage;
